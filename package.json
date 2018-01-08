@@ -14,11 +14,15 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start:dev": "nodemon ./bin/www",
+    "test": "echo \"Error: no test specified\"&& exit 1"
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
   "main": "index.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^1.14.8"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gabrielabud/take-a-paws.git"

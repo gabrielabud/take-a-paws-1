@@ -11,16 +11,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/users', (req, res) => {
   res.status(200).send({
-    hello: "goodbye"
+    hello: "goodbye!"
   })
 })
 
 app.get('*', (req, res) => res.status(200).send({
   message: "Welcome to Majd's world"
 }));
-
-app.listen(3000, () => {
-  console.log('hello majd')
-});
 
 module.exports = app;
