@@ -13,25 +13,27 @@ class DogList extends Component {
   render() {
     let dogs = DOGS;
     return (
-
       <Router>
-      <div id="dog-list">
-        {
+        <div>
+          <div id="dog-list">
+          {
             dogs.map(dog => (
+              <div>
               <Dog
-                key={dog.id}
-                name={dog.name}
-                breed={dog.breed}
-                description={dog.description}
-                image= {dog.image}
-              />,
+              key={dog.id}
+              name={dog.name}
+              breed={dog.breed}
+              description={dog.description}
+              image= {dog.image}
+              />
               <Link to={`/dog/${dog.id}`}>click</Link>
+              </div>
             ))
-        }
-      </div>
-      <div>
-      <Route path="/dog/:dogId" component={Doggy} />
-      </div>
+          }
+          </div>
+
+          <Route path="/dog/:dogId" component={Doggy} />
+        </div>
       </Router>
     );
   }
