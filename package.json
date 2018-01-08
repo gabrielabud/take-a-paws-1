@@ -6,17 +6,19 @@
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "morgan": "^1.9.0",
+    "pg": "^7.4.1",
+    "pg-hstore": "^2.3.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-scripts": "1.0.17"
+    "react-scripts": "1.0.17",
+    "sequelize": "^4.29.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "echo \"Error: no test specified\"&& exit 1",
     "eject": "react-scripts eject",
-    "start:dev": "nodemon ./bin/www",
-    "test": "echo \"Error: no test specified\"&& exit 1"
+    "start:dev": "nodemon ./bin/www"
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
   "main": "index.js",
