@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Dog from './Dog';
 
 const DOGS = [
   { id: 1, name: 'Jackie', breed: 'German Shepherd', description: 'Best dog ever', image: 'german-shepherd.jpg' },
@@ -6,7 +7,7 @@ const DOGS = [
   { id: 3, name: 'Ice', breed: 'Dobermann', description: 'Loves to exercise', image: 'dobermann.jpg' },
 ]
 
-export class DogList extends Component {
+class DogList extends Component {
   render() {
     let dogs = DOGS;
     return (
@@ -26,3 +27,4 @@ export class DogList extends Component {
     );
   }
 }
+export default DogList;
