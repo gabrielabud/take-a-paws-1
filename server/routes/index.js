@@ -6,4 +6,5 @@ module.exports = (app) => {
   }));
 
   app.post('/api/dogowners', dogownersController.create);
+  app.get('/api/dogowners', dogownersController.list);
 };
