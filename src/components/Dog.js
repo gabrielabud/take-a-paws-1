@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 class Dog extends Component {
   render () {
     return (
         <div className="dog" >
           <div>
-            <img className="thumb" src={this.props.image} alt={this.props.name} />
-
+            <Link to={this.props.to}><img className="thumb" src={this.props.image} alt={this.props.name} /></Link>
           </div>
           <div>
             <div className="dogname">{this.props.name}</div>

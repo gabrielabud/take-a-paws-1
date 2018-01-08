@@ -18,15 +18,14 @@ class DogList extends Component {
           <div id="dog-list">
           {
             dogs.map(dog => (
-              <div>
-              <Dog
-              key={dog.id}
-              name={dog.name}
-              breed={dog.breed}
-              description={dog.description}
-              image= {dog.image}
-              />
-              <Link to={`/dog/${dog.id}`}>click</Link>
+              <div key={dog.id}>
+                <Dog
+                to={"/dog/" + dog.id}
+                name={dog.name}
+                breed={dog.breed}
+                description={dog.description}
+                image= {dog.image}
+                />
               </div>
             ))
           }
