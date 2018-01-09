@@ -20,10 +20,9 @@ require('./server/routes')(app);
 
 app.post('/upload', fileParser, function(req, res){
   var imageFile = req.files.image;
-  cloudinary.uploader.upload(imageFile.path);
-  res.status(200).send({
-    message: "Welcome to Majd's world"
-  })
+  cloudinary.uploader.upload(imageFile.path, function(result){
+    res.status(200).send(result.url)
+  });
 });
 
 app.get('*', (req, res) => res.status(200).send({
