@@ -1,0 +1,16 @@
+{
+  "development": {
+    "username": "",
+    "password": null,
+    "database": "take-a-paws-dev",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "",
+    "password": null,
+    "database": "take-a-paws-test",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
