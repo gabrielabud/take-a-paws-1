@@ -1,45 +1,28 @@
 import React, { Component } from 'react';
 import Dog from './Dog';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-
-const DOGS = [
-  { id: 1, name: 'Jackie', breed: 'German Shepherd', description: 'Best dog ever', image: 'german-shepherd.jpg' },
-  { id: 2, name: 'Joey', breed: 'Spaniel', description: 'So lovable', image: 'spaniel.jpg' },
-  { id: 3, name: 'Ice', breed: 'Dobermann', description: 'Loves to exercise', image: 'dobermann.jpg' },
-]
+import { DOGS } from '../App';
 
 class DogList extends Component {
 
   render() {
-    let dogs = DOGS;
     return (
-      <Router>
-        <div>
-          <div id="dog-list">
-          {
-            dogs.map(dog => (
-              <div key={dog.id}>
-                <Dog
-                to={"/dog/" + dog.id}
-                name={dog.name}
-                breed={dog.breed}
-                description={dog.description}
-                image= {dog.image}
-                />
-              </div>
-            ))
-          }
+      <div id="dog-list">
+      {
+        DOGS.map(dog => (
+          <div key={dog.id}>
+            <Dog
+            to={"/dog/" + dog.id}
+            name={dog.name}
+            breed={dog.breed}
+            description={dog.description}
+            image= {dog.image}
+            />
           </div>
-
-          <Route path="/dog/:dogId" component={Doggy} />
-        </div>
-      </Router>
+        ))
+      }
+      </div>
     );
   }
 }
-const Doggy = ({ match }) => (
-  <div>
-  {match.params.dogId}
-  </div>
-)
+
 export default DogList;

@@ -18,7 +18,6 @@ class Dog extends Component {
             <div className="dogdescription">{this.props.description}</div>
           </div>
         </div>
-
     );
   }
 }
