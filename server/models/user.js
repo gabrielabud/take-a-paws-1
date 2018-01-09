@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-  const DogOwner = sequelize.define('DogOwner', {
+  const User = sequelize.define('User', {
     firstname: {
       type: Sequelize.STRING,
       allowNull: false,
@@ -44,11 +44,11 @@ module.exports = (sequelize, Sequelize) => {
     }
   });
 
-  DogOwner.associate = (models) => {
-    DogOwner.hasMany(models.Dog, {
-      foreignKey: 'dogownerId',
+  User.associate = (models) => {
+    User.hasMany(models.Dog, {
+      foreignKey: 'userId',
       as: 'dogs',
     });
   };
-  return DogOwner;
+  return User;
 };

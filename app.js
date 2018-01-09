@@ -19,7 +19,7 @@ const authRoute = require('./server/routes/auth.js')(app, passport);
 
 var models = require('./server/models');
 require('./server/routes')(app);
-require('./server/config/passport/passport.js')(passport, models.dogowner);
+require('./server/config/passport/passport.js')(passport, models.user);
 
 
 app.get('*', (req, res) => res.status(200).send({

@@ -5,7 +5,7 @@ module.exports = {
     return Dog
     .create({
       name: req.body.name,
-      dogownerId: req.params.dogownerId,
+      userId: req.params.userId,
     })
     .then(dog => res.status(201).send(dog))
     .catch(error => res.status(400).send(error));

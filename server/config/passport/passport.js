@@ -1,7 +1,7 @@
 var bCrypt = require('bcrypt-nodejs');
 
-module.exports = function(passport, dogowner) {
-  var DogOwner = dogowner;
+module.exports = function(passport, user) {
+  var User = user;
   var LocalStrategy = require('passport-local').Strategy;
 
   passport.use('local-signup', new LocalStrategy(
@@ -17,12 +17,12 @@ module.exports = function(passport, dogowner) {
         return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
       };
 
-      DogOwner.findOne({
+      User.findOne({
         where: {
           email: email
         }
-      }).then(function(dogowner) {
-        if(dogowner){
+      }).then(function(user) {
+        if(user){
           return done(null, false, {
             message: 'That email is already taken'
           });
@@ -30,18 +30,18 @@ module.exports = function(passport, dogowner) {
           var userPassword = generateHash(password);
           var data = {
             email: email,
-            password: dogownerPassword,
+            password: userPassword,
             firstname: req.body.firstname,
             lastname: req.body.lastname,
             username: req.body.username,
             city: req.body.city,
             postcode: req.body.postcode,
           };
-          DogOwner.create(data).then(function(newDogOwner, created) {
-            if(!newDogOwner) {
+          User.create(data).then(function(newUser, created) {
+            if(!newUser) {
               return done(null, false);
             }
-            if(newDogOwner) {
+            if(newUser) {
               return done(null, newUser);
             }
           });
@@ -50,16 +50,16 @@ module.exports = function(passport, dogowner) {
     }
   ));
 
-  passport.serializeUser(function(dogowner, done) {
-    done(null, dogowner.id);
+  passport.serializeUser(function(user, done) {
+    done(null, user.id);
   });
 
   passport.deserializeUser(function(id, done) {
-    Dogowner.findbyID(id).then(function(dogowner) {
-      if(dogowner) {
-        done(null,dogowner.get());
+    User.findbyID(id).then(function(user) {
+      if(user) {
+        done(null,user.get());
       } else {
-        done(dogowner.errors, null);
+        done(user.errors, null);
       }
     });
   });

@@ -1,8 +1,8 @@
-const DogOwner = require('../models').DogOwner;
+const User = require('../models').User;
 
 module.exports = {
   create(req, res) {
-    return DogOwner
+    return User
       .create({
         firstname: req.body.firstname,
         lastname: req.body.lastname,
@@ -13,14 +13,14 @@ module.exports = {
         postcode: req.body.postcode,
         status: req.body.status
       })
-      .then(dogowner => res.status(201).send(dogowner))
+      .then(user => res.status(201).send(user))
       .catch(error => res.status(400).send(error));
   },
 
   list(req, res) {
-    return DogOwner
+    return User
       .all()
-      .then(dogowners => res.status(200).send(dogowners))
+      .then(users => res.status(200).send(users))
       .catch(error => res.status(400).send(error));
   }
 };

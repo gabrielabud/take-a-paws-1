@@ -1,7 +1,7 @@
-const dogowners = require('./dogowners');
+const users = require('./users');
 const dogs = require('./dogs');
 
 module.exports = {
-  dogowners,
+  users,
   dogs,
 };
