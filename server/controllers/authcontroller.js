@@ -1,5 +1,5 @@
-exports.logout = function(req, res) {
-    req.session.destroy(function(err) {
+exports.logout = (req, res) => {
+    req.session.destroy((err) => {
         res.redirect('https://www.theguardian.com/');
     });
 }

@@ -1,6 +1,6 @@
-var authController = require('../controllers/authcontroller.js');
+const authController = require('../controllers/authcontroller.js');
 
-module.exports = function(app, passport) {
+module.exports = (app, passport) => {
 
   app.post('/signup', passport.authenticate('local-signup', {
     successRedirect: '/',
@@ -18,6 +18,5 @@ module.exports = function(app, passport) {
     if (req.isAuthenticated())
         return next();
     res.redirect('/signin');
-
   }
 };
