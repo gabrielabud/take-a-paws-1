@@ -7,9 +7,40 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
+      firstname: {
         type: Sequelize.STRING,
         allowNull: false
+      },
+      lastname: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      email: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        validate: {
+          isEmail:true
+        }
+      },
+      username: {
+        type: Sequelize.TEXT,
+        allowNull: false
+      },
+      password: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      city: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      postcode: {
+        type: Sequelize.TEXT,
+        allowNull: false
+      },
+      status: {
+        type: Sequelize.ENUM('active','inactive'),
+        defaultValue:'active'
       },
       createdAt: {
         allowNull: false,
