@@ -1,6 +1,7 @@
 var bCrypt = require('bcrypt-nodejs');
 
 module.exports = function(passport, user) {
+
   var User = user;
   var LocalStrategy = require('passport-local').Strategy;
 
@@ -55,9 +56,9 @@ module.exports = function(passport, user) {
   });
 
   passport.deserializeUser(function(id, done) {
-    User.findbyID(id).then(function(user) {
+    User.findById(id).then(function(user) {
       if(user) {
-        done(null,user.get());
+        done(null, user.get());
       } else {
         done(user.errors, null);
       }
