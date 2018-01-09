@@ -1,17 +1,17 @@
-module.exports = (sequelize, DataTypes) => {
+module.exports = (sequelize, Sequelize) => {
   const DogOwner = sequelize.define('DogOwner', {
     firstname: {
-      type: DataTypes.STRING,
+      type: Sequelize.STRING,
       allowNull: false,
     },
 
     lastname: {
-      type: DataTypes.STRING,
+      type: Sequelize.STRING,
       allowNull: false,
     },
 
     email: {
-      type: DataTypes.STRING,
+      type: Sequelize.STRING,
       allowNull: false,
       validate: {
         isEmail: true
@@ -19,27 +19,27 @@ module.exports = (sequelize, DataTypes) => {
     },
 
     username: {
-      type: DataTypes.TEXT,
+      type: Sequelize.TEXT,
       allowNull: false,
     },
 
     password: {
-      type: DataTypes.STRING,
+      type: Sequelize.STRING,
       allowNull: false,
     },
 
     city: {
-      type: DataTypes.STRING,
+      type: Sequelize.STRING,
       allowNull: false,
     },
 
     postcode: {
-      type: DataTypes.TEXT,
+      type: Sequelize.TEXT,
       allowNull: false,
     },
 
     status: {
-      type: Sequalize.ENUM('active', 'inactive'),
+      type: Sequelize.ENUM('active', 'inactive'),
       defaultValue: 'active'
     }
   });
