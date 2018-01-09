@@ -1,7 +1,5 @@
-// Use 'signup id in REACT'
-
-// var exports = module.exports = {}
-//
-// exports.signup = function(req, res) {
-//   res.render('signup');
-// }
+exports.logout = function(req, res) {
+    req.session.destroy(function(err) {
+        res.redirect('https://www.theguardian.com/');
+    });
+}
