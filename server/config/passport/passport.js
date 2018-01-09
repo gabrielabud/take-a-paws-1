@@ -49,4 +49,18 @@ module.exports = function(passport, dogowner) {
       });
     }
   ));
+
+  passport.serializeUser(function(dogowner, done) {
+    done(null, dogowner.id);
+  });
+
+  passport.deserializeUser(function(id, done) {
+    Dogowner.findbyID(id).then(function(dogowner) {
+      if(dogowner) {
+        done(null,dogowner.get());
+      } else {
+        done(dogowner.errors, null);
+      }
+    });
+  });
 }

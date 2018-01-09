@@ -15,6 +15,7 @@ app.use(bodyParser.json());
 app.use(session({ secret: 'take-a-paws', resave: true, saveUninitialized:true }));
 app.use(passport.initialize());
 app.use(passport.session());
+const authRoute = require('./server/routes/auth.js')(app, passport);
 
 var models = require('./server/models');
 require('./server/routes')(app);
