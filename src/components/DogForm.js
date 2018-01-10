@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import { Redirect } from 'react-router';
 
 class DogForm extends Component {
   constructor() {
@@ -7,7 +9,8 @@ class DogForm extends Component {
       name: '',
       breed: '',
       description: '',
-      image: ''
+      image: '',
+      redirect: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -25,11 +28,20 @@ class DogForm extends Component {
   }
 
   handleSubmit(event) {
-
+    event.preventDefault();
+    const {name, breed, description, image} = this.state;
+    console.log({name, breed, description, image});
+    axios.post('http://localhost:3001/api/users/1/dogs', {name, breed, description, image})
+    .then(() => this.setState({ redirect: true }));
   }
+
   render() {
+    const redirect = this.state.redirect;
+    if(redirect) {
+      return <Redirect to='/' />;
+    }
     return (
-      <form>
+      <form onSubmit={this.handleSubmit}>
         <label>
           Name:
           <input type="text" name="name" value={this.state.name} onChange={this.handleChange} />
