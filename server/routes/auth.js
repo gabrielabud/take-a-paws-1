@@ -4,12 +4,12 @@ module.exports = (app, passport) => {
 
   app.post('/signup', passport.authenticate('local-signup', {
     successRedirect: '/',
-    failureRedirect: 'http://www.nationalgeographic.com/'
+    failureRedirect: 'https://localhost:3000/'
   }));
 
   app.post('/signin', passport.authenticate('local-signin', {
     successRedirect: 'http://www.bbc.co.uk/',
-    failureRedirect: 'http://www.nationalgeographic.com/'
+    failureRedirect: 'https://www.nationalgeographic.com/'
   }));
 
   app.get('/logout',authController.logout);
