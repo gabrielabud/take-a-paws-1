@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { Redirect } from 'react-router'
 
 export default class SignUpForm extends Component {
+
   constructor(props){
     super(props);
     this.state = {
@@ -12,7 +14,8 @@ export default class SignUpForm extends Component {
       username: "",
       password: "",
       city: "",
-      postcode: ""
+      postcode: "",
+      redirect: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -31,11 +34,17 @@ export default class SignUpForm extends Component {
   handleSubmit(event) {
     event.preventDefault();
     const { firstname, lastname, email, username, password, city, postcode } = this.state;
-    axios.post('http://localhost:3001/signup', { firstname, lastname, email, username, password, city, postcode }).then(response => response);
+    axios.post('http://localhost:3001/signup', { firstname, lastname, email, username, password, city, postcode })
+      .then(() => this.setState({ redirect: true }));
   }
 
 
 render() {
+    const redirect = this.state.redirect;
+    if(redirect) {
+      return <Redirect to='/' />;
+    }
+
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
