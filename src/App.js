@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import DogList from './components/DogList.js'
 import DogProfile from './components/DogProfile.js'
+import SignUpForm from './components/SignUpForm.js'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 export const DOGS = [
@@ -16,7 +17,8 @@ class App extends Component {
       <Router>
         <div className="App">
           <Route exact path="/" component={DogList} />
-          <Route path="/dog/:dogId" component={DogProfile} />
+          <Route exact path="/dog/:dogId" component={DogProfile} />
+          <Route exact path="/signup" component={SignUpForm} />
         </div>
       </Router>
     );

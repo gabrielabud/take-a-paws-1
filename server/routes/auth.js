@@ -4,7 +4,7 @@ module.exports = (app, passport) => {
 
   app.post('/signup', passport.authenticate('local-signup', {
     successRedirect: '/',
-    failureRedirect: '/'
+    failureRedirect: 'http://www.nationalgeographic.com/'
   }));
 
   app.post('/signin', passport.authenticate('local-signin', {
