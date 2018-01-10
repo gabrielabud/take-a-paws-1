@@ -1,4 +1,4 @@
-const dogownersController = require('../controllers').dogowners;
+const usersController = require('../controllers').users;
 const dogsController = require('../controllers').dogs;
 
 module.exports = (app) => {
@@ -6,7 +6,7 @@ module.exports = (app) => {
     message: 'Welcome to take a paws!',
   }));
 
-  app.post('/api/dogowners', dogownersController.create);
-  app.get('/api/dogowners', dogownersController.list);
-  app.post('/api/dogowners/:dogownerId/dogs', dogsController.create);
+  app.post('/api/users', usersController.create);
+  app.get('/api/users', usersController.list);
+  app.post('/api/users/:userId/dogs', dogsController.create);
 };
