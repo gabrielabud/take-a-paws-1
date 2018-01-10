@@ -3,6 +3,7 @@ import './App.css';
 import DogList from './components/DogList.js'
 import DogProfile from './components/DogProfile.js'
 import SignUpForm from './components/SignUpForm.js'
+import SignInForm from './components/SignInForm.js'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 export const DOGS = [
@@ -19,6 +20,7 @@ class App extends Component {
           <Route exact path="/" component={DogList} />
           <Route exact path="/dog/:dogId" component={DogProfile} />
           <Route exact path="/signup" component={SignUpForm} />
+          <Route exact path="/signin" component={SignInForm} />
         </div>
       </Router>
     );

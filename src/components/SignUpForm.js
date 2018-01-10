@@ -15,7 +15,7 @@ export default class SignUpForm extends Component {
       password: "",
       city: "",
       postcode: "",
-      redirect: false
+      status: null
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -35,15 +35,15 @@ export default class SignUpForm extends Component {
     event.preventDefault();
     const { firstname, lastname, email, username, password, city, postcode } = this.state;
     axios.post('http://localhost:3001/signup', { firstname, lastname, email, username, password, city, postcode })
-      .then(() => this.setState({ redirect: true }));
+      .then((response) => this.setState({ status: response.data.message}));
   }
 
 
 render() {
-    const redirect = this.state.redirect;
-    if(redirect) {
-      return <Redirect to='/' />;
-    }
+  const { status } = this.state;
+  if(status === "200") {
+    return <Redirect to='/' />;
+  }
 
     return (
       <form onSubmit={this.handleSubmit}>
@@ -54,7 +54,8 @@ render() {
         <label>
           Last name:
           <input type="text" name="lastname" value={this.state.lastname} onChange={this.handleChange} />
-        </label><label>
+        </label>
+        <label>
           Email:
           <input type="text" name="email" value={this.state.email} onChange={this.handleChange} />
         </label><label>
