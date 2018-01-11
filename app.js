@@ -38,9 +38,15 @@ const authRoute = require('./server/routes/auth.js')(app, passport);
 require('./server/routes')(app);
 require('./server/config/passport/passport.js')(passport, models.User);
 
-
-app.get('*', (req, res) => res.status(200).send({
-  message: "Welcome to Majd's world"
+app.get('/error', (req, res) => res.status(200).send({
+  message: "user not found"
 }));
 
+app.get('/', (req, res) => res.status(200).send({
+  message: "200"
+}));
+
+app.get('*', (req, res) => res.status(200).send({
+  message: "Welcome"
+}));
 module.exports = app;
