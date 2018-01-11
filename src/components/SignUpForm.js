@@ -41,54 +41,73 @@ export default class SignUpForm extends Component {
       .then((response) => this.setState({ status: response.data.message}));
   }
 
-
-
-render() {
-  const { status } = this.state;
-  if(status === "200") {
-    return <Redirect to='/' />;
-  }
-
-  const required = (value) => {
-    if (!value.toString().trim().length) {
-      return 'required field';
+  render() {
+    const { status } = this.state;
+    if(status === "200") {
+      return <Redirect to='/' />;
     }
-  };
 
-  const email = (value) => {
-    if (!validator.isEmail(value)) {
-      return `${value} is not a valid email.`
-    }
-  };
+    const required = (value) => {
+      if (!value.toString().trim().length) {
+        return 'required field';
+      }
+    };
+
+    const email = (value) => {
+      if (!validator.isEmail(value)) {
+        return `${value} is not a valid email.`
+      }
+    };
 
 
     return (
       <Form onSubmit={this.handleSubmit}>
+        <h3>Sign Up</h3>
+        <div>
         <label>
           First name:
-          <Input type="text" name="firstname" value={this.state.firstname} onChange={this.handleChange} validations={[required]} />
+          <Input name="firstname" value={this.state.firstname} onChange={this.handleChange} validations={[required]} />
         </label>
+        </div>
+        <div>
         <label>
           Last name:
-          <Input type="text" name="lastname" value={this.state.lastname} onChange={this.handleChange} validations={[required]} />
+          <Input name="lastname" value={this.state.lastname} onChange={this.handleChange} validations={[required]} />
         </label>
+        </div>
+        <div>
         <label>
           Email:
-          <Input type="text" name="email" value={this.state.email} onChange={this.handleChange} validations={[required, email]} />
-        </label><label>
-          Username:
-          <Input type="text" name="username" value={this.state.username} onChange={this.handleChange} validations={[required]}/>
-        </label><label>
-          Password:
-          <Input type="text" name="password" value={this.state.password} onChange={this.handleChange} validations={[required]} />
-        </label><label>
-          City:
-          <Input type="text" name="city" value={this.state.city} onChange={this.handleChange} validations={[required]} />
-        </label><label>
-          Postcode:
-          <Input type="text" name="postcode" value={this.state.postcode} onChange={this.handleChange} validations={[required]} />
+          <Input name="email" value={this.state.email} onChange={this.handleChange} validations={[required, email]} />
         </label>
+        </div>
+        <div>
+        <label>
+          Username:
+          <Input name="username" value={this.state.username} onChange={this.handleChange} validations={[required]}/>
+        </label>
+        </div>
+        <div>
+        <label>
+          Password:
+          <Input type="password" name="password" value={this.state.password} onChange={this.handleChange} validations={[required]} />
+        </label>
+        </div>
+        <div>
+        <label>
+          City:
+          <Input name="city" value={this.state.city} onChange={this.handleChange} validations={[required]} />
+        </label>
+        </div>
+        <div>
+        <label>
+          Postcode:
+          <Input name="postcode" value={this.state.postcode} onChange={this.handleChange} validations={[required]} />
+        </label>
+        </div>
+        <div>
         <Input type="submit" value="Submit" />
+        </div>
       </Form>
     );
   }
