@@ -4,6 +4,7 @@ import DogList from './components/DogList.js'
 import DogProfile from './components/DogProfile.js'
 import SignUpForm from './components/SignUpForm.js'
 import DogForm from './components/DogForm.js'
+import DogsApi from './components/DogsApi.js'
 import SignInForm from './components/SignInForm.js'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
@@ -23,7 +24,7 @@ class App extends Component {
           <Route exact path="/signup" component={SignUpForm} />
           <Route exact path="/dogform" component={DogForm} />
           <Route exact path="/signin" component={SignInForm} />
-
+          <Route exact path="/dogapi" component={DogsApi} />
         </div>
       </Router>
     );
