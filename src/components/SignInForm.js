@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import validator from 'validator';
+import Input from 'react-validation/build/input';
+import Form from 'react-validation/build/form';
 import { Redirect } from 'react-router'
 
 export default class SignInForm extends Component {
@@ -32,23 +35,36 @@ export default class SignInForm extends Component {
       .then((response) => this.setState({ status: response.data.message}));
   }
   render() {
+
       const { status } = this.state;
       if(status === "200") {
         return <Redirect to='/' />;
       }
 
+      const required = (value) => {
+        if (!value.toString().trim().length) {
+          return 'required field';
+        }
+      };
+
+      const email = (value) => {
+        if (!validator.isEmail(value)) {
+          return `${value} is not a valid email.`
+        }
+      };
+
       return (
-        <form onSubmit={this.handleSubmit}>
+        <Form onSubmit={this.handleSubmit}>
         <label>
           Email:
-          <input type="text" name="email" value={this.state.email} onChange={this.handleChange} />
+          <Input name="email" value={this.state.email} validations={[required, email]} onChange={this.handleChange} />
         </label>
         <label>
           Password:
-          <input type="text" name="password" value={this.state.password} onChange={this.handleChange} />
+          <Input type="password" name="password" value={this.state.password} validations={[required]} onChange={this.handleChange} />
         </label>
-        <input type="submit" value="Submit" />
-      </form>
+        <Input type="submit" value="Submit" />
+      </Form>
     );
   }
 
