@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import Dog from './Dog';
 import { DOGS } from '../App';
+import PropTypes from 'prop-types';
 
-class DogList extends Component {
-
-  render() {
+const DogList = props => {
     return (
       <div id="dog-list">
-      {
-        DOGS.map(dog => (
+        {
+        props.dogsapi.map(dog => (
           <div key={dog.id}>
             <Dog
             to={"/dog/" + dog.id}
@@ -19,10 +18,9 @@ class DogList extends Component {
             />
           </div>
         ))
-      }
+       }
       </div>
     );
-  }
-}
+};
 
 export default DogList;
