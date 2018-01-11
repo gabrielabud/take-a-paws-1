@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { DOGS } from '../App';
+import { DOGS } from './App';
 
 class DogProfile extends Component {
   render() {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Dog from './Dog';
-import { DOGS } from '../App';
+import { DOGS } from './App';
 import PropTypes from 'prop-types';
 
 const DogList = props => {
