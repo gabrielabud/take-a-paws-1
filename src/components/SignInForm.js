@@ -60,7 +60,7 @@ export default class SignInForm extends Component {
 
       return (
         <div>
-          <Navigation/>
+          <Navigation signin="true"/>
           <Form onSubmit={this.handleSubmit}>
           <label>
             Email:
