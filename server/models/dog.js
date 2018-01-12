@@ -23,6 +23,10 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'userId',
       onDelete: 'CASCADE',
     });
+    Dog.hasMany(models.Request, {
+      foreignKey: 'dogId',
+      as: 'requests',
+    });
   };
   return Dog;
 };
