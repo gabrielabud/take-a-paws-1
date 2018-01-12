@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios, { post } from 'axios';
 import { Redirect } from 'react-router';
+import Navigation from './Navigation';
 
 class DogForm extends Component {
   constructor(props) {
@@ -56,22 +57,25 @@ class DogForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.onFormSubmit}>
-        <label>
-          Name:
-          <input type="text" name="name" value={this.state.name} onChange={this.handleChange} />
-        </label>
-        <label>
-          Breed:
-          <input type="text" name="breed" value={this.state.breed} onChange={this.handleChange} />
-        </label>
-        <label>
-          Description:
-          <input type="text" name="description" value={this.state.description} onChange={this.handleChange} />
-        </label>
-        <input type="file" name="image" onChange={this.onChange} />
-        <button type="submit">Upload</button>
-      </form>
+      <div>
+        <Navigation />
+        <form onSubmit={this.onFormSubmit}>
+          <label>
+            Name:
+            <input type="text" name="name" value={this.state.name} onChange={this.handleChange} />
+          </label>
+          <label>
+            Breed:
+            <input type="text" name="breed" value={this.state.breed} onChange={this.handleChange} />
+          </label>
+          <label>
+            Description:
+            <input type="text" name="description" value={this.state.description} onChange={this.handleChange} />
+          </label>
+          <input type="file" name="image" onChange={this.onChange} />
+          <button type="submit">Upload</button>
+        </form>
+      </div>
    )
   }
 }

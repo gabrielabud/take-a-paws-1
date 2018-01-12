@@ -48,6 +48,22 @@ app.get('/id/:email', (req, res) => {
     })
 });
 
+app.get('/users/:id', (req, res) => {
+  models.User.findOne({
+    where: {
+      id: req.params.id
+    }
+  }).then((user) => {
+      res.status(200).send({
+        id: user.id,
+        firstname: user.firstname,
+        lastname: user.lastname,
+        email: user.email,
+        username: user.username
+      })
+    })
+});
+
 app.get('/error', (req, res) => res.status(200).send({
   message: "404"
 }));
