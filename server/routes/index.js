@@ -15,4 +15,5 @@ module.exports = (app) => {
   app.get('/api/users', usersController.list);
   app.post('/api/users/:userId/:dogId/requests', requestsController.create);
   app.get('/api/requests/:dogId', requestsController.list);
+  app.put('/api/requests/:requestId', requestsController.update);
 };
