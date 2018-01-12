@@ -14,8 +14,10 @@ module.exports = {
 
   list(req, res) {
     return Request
-      .all()
-      .then(requests => res.status(200).send(requests))
+      .findAll({
+        where: { dogId: req.params.dogId}
+      }).then(requests =>
+        res.status(200).send(requests))
       .catch(error => res.status(400).send(error));
   }
 };
