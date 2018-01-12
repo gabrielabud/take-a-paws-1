@@ -1,5 +1,6 @@
 const usersController = require('../controllers').users;
 const dogsController = require('../controllers').dogs;
+const requestsController = require('../controllers').requests;
 const fileParser = require('connect-multiparty')();
 
 module.exports = (app) => {
@@ -12,4 +13,6 @@ module.exports = (app) => {
   app.get('/api/dogs/:dogId', dogsController.retrieve);
   app.post('/api/users', usersController.create);
   app.get('/api/users', usersController.list);
+  app.post('/api/users/:userId/:dogId/requests', requestsController.create);
+  app.get('/api/:dogId/requests', requestsController.list);
 };
