@@ -3,6 +3,7 @@ import axios from 'axios';
 import validator from 'validator';
 import Input from 'react-validation/build/input';
 import Form from 'react-validation/build/form';
+import Navigation from './Navigation';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { Redirect } from 'react-router'
 
@@ -61,54 +62,57 @@ export default class SignUpForm extends Component {
 
 
     return (
-      <Form onSubmit={this.handleSubmit}>
-        <h3>Sign Up</h3>
-        <div>
-        <label>
-          First name:
-          <Input name="firstname" value={this.state.firstname} onChange={this.handleChange} validations={[required]} />
-        </label>
-        </div>
-        <div>
-        <label>
-          Last name:
-          <Input name="lastname" value={this.state.lastname} onChange={this.handleChange} validations={[required]} />
-        </label>
-        </div>
-        <div>
-        <label>
-          Email:
-          <Input name="email" value={this.state.email} onChange={this.handleChange} validations={[required, email]} />
-        </label>
-        </div>
-        <div>
-        <label>
-          Username:
-          <Input name="username" value={this.state.username} onChange={this.handleChange} validations={[required]}/>
-        </label>
-        </div>
-        <div>
-        <label>
-          Password:
-          <Input type="password" name="password" value={this.state.password} onChange={this.handleChange} validations={[required]} />
-        </label>
-        </div>
-        <div>
-        <label>
-          City:
-          <Input name="city" value={this.state.city} onChange={this.handleChange} validations={[required]} />
-        </label>
-        </div>
-        <div>
-        <label>
-          Postcode:
-          <Input name="postcode" value={this.state.postcode} onChange={this.handleChange} validations={[required]} />
-        </label>
-        </div>
-        <div>
-        <Input type="submit" value="Submit" />
-        </div>
-      </Form>
+      <div>
+      <Navigation/>
+        <Form onSubmit={this.handleSubmit}>
+          <h3>Sign Up</h3>
+          <div>
+          <label>
+            First name:
+            <Input name="firstname" value={this.state.firstname} onChange={this.handleChange} validations={[required]} />
+          </label>
+          </div>
+          <div>
+          <label>
+            Last name:
+            <Input name="lastname" value={this.state.lastname} onChange={this.handleChange} validations={[required]} />
+          </label>
+          </div>
+          <div>
+          <label>
+            Email:
+            <Input name="email" value={this.state.email} onChange={this.handleChange} validations={[required, email]} />
+          </label>
+          </div>
+          <div>
+          <label>
+            Username:
+            <Input name="username" value={this.state.username} onChange={this.handleChange} validations={[required]}/>
+          </label>
+          </div>
+          <div>
+          <label>
+            Password:
+            <Input type="password" name="password" value={this.state.password} onChange={this.handleChange} validations={[required]} />
+          </label>
+          </div>
+          <div>
+          <label>
+            City:
+            <Input name="city" value={this.state.city} onChange={this.handleChange} validations={[required]} />
+          </label>
+          </div>
+          <div>
+          <label>
+            Postcode:
+            <Input name="postcode" value={this.state.postcode} onChange={this.handleChange} validations={[required]} />
+          </label>
+          </div>
+          <div>
+          <Input type="submit" value="Submit" />
+          </div>
+        </Form>
+      </div>
     );
   }
 }
