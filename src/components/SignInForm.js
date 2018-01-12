@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import validator from 'validator';
 import Input from 'react-validation/build/input';
 import Form from 'react-validation/build/form';
+import Navigation from './Navigation';
 import { Redirect } from 'react-router'
 
 export default class SignInForm extends Component {
@@ -58,17 +59,20 @@ export default class SignInForm extends Component {
       };
 
       return (
-        <Form onSubmit={this.handleSubmit}>
-        <label>
-          Email:
-          <Input name="email" value={this.state.email} validations={[required, email]} onChange={this.handleChange} />
-        </label>
-        <label>
-          Password:
-          <Input type="password" name="password" value={this.state.password} validations={[required]} onChange={this.handleChange} />
-        </label>
-        <Input type="submit" value="Submit" />
-      </Form>
+        <div>
+          <Navigation/>
+          <Form onSubmit={this.handleSubmit}>
+          <label>
+            Email:
+            <Input name="email" value={this.state.email} validations={[required, email]} onChange={this.handleChange} />
+          </label>
+          <label>
+            Password:
+            <Input type="password" name="password" value={this.state.password} validations={[required]} onChange={this.handleChange} />
+          </label>
+          <Input type="submit" value="Submit" />
+          </Form>
+        </div>
     );
   }
 

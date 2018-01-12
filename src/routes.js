@@ -5,6 +5,7 @@ import SignUpForm from './components/SignUpForm';
 import DogForm from './components/DogForm';
 import SignInForm from './components/SignInForm';
 import UserAccount from './components/UserAccount';
+import Navigation from './components/Navigation';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 const Routes = (props) => (
