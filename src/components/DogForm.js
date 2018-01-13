@@ -32,8 +32,8 @@ class DogForm extends Component {
   onFormSubmit(e){
     e.preventDefault() // Stop form submit
 
-    this.fileUpload(this.state.file)
-    }
+    this.fileUpload(this.state.file);
+  }
 
   onChange(e) {
     this.setState({file:e.target.files[0]})
@@ -79,7 +79,5 @@ class DogForm extends Component {
    )
   }
 }
-
-
 
 export default DogForm;

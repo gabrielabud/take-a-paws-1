@@ -42,6 +42,10 @@ module.exports = {
         type: Sequelize.ENUM('active','inactive'),
         defaultValue:'active'
       },
+      image: {
+        type: Sequelize.TEXT,
+        allowNull: true,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

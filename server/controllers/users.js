@@ -1,6 +1,15 @@
 const User = require('../models').User;
+const cloudinary = require('cloudinary');
+require('dotenv').config()
+
+cloudinary.config({
+  cloud_name: process.env.cloud_name,
+  api_key: process.env.api_key,
+  api_secret: process.env.api_secret
+})
 
 module.exports = {
+
   create(req, res) {
     return User
       .create({
@@ -15,6 +24,26 @@ module.exports = {
       })
       .then(user => res.status(201).send(user))
       .catch(error => res.status(400).send(error));
+  },
+
+  update(req, res) {
+    var url = null;
+    const imageFile = req.files.file;
+    cloudinary.uploader.upload(imageFile.path, function(result) {
+      url = result.url;
+      User.findOne({
+        where: {
+          id: req.params.id
+        }
+      }).then((user) => {
+         user.updateAttributes({
+            image: url
+         })
+         return user
+      })
+      .then((user) => res.status(200).send(user))
+      .catch(error => res.status(400).send(error));
+    });
   },
 
   list(req, res) {
