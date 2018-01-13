@@ -1,14 +1,43 @@
 import React, { Component } from 'react';
-import { DOGS } from './App';
 
-class DogProfile extends Component {
+class DogProfile extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      dogData: []
+    }
+  }
+
+  componentDidMount() {
+    let self=this;
+    const id = self.props.match.params.dogId
+    fetch(`http://localhost:3001/api/dogs/${id}`)
+      .then(function(results) {
+        return results.json();
+      })
+      .then(function(data){
+          console.log(data)
+          self.setState({
+            dogData: data
+          })
+      })
+      .catch(function(error) {
+        console.log(error)
+      });
+  }
+
   render() {
     return (
       <div>
-        {this.props.match.params.dogId}
+      <p>{this.state.dogData.name}</p>
+      <p>{this.state.dogData.breed}</p>
+      <p>{this.state.dogData.description}</p>
+      <div>
+        <img className="thumb" src={this.state.dogData.image} alt={this.state.dogData.name} />
+      </div>
       </div>
     );
   }
 }
-
 export default DogProfile;
