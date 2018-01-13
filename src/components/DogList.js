@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Dog from './Dog';
-import { DOGS } from './App';
+import Dogs from './App';
+import Paw from './Paw';
 import PropTypes from 'prop-types';
 
 const DogList = props => {
@@ -16,11 +17,11 @@ const DogList = props => {
             description={dog.description}
             image= {dog.image}
             />
+            <Paw/>
           </div>
         ))
        }
       </div>
     );
 };
-
 export default DogList;

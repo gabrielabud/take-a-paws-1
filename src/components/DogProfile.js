@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class DogProfile extends React.Component {
+class DogProfile extends Component {
 
   constructor(props) {
     super(props)
