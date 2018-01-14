@@ -1,6 +1,17 @@
 const express = require('express');
 const app = express();
 
+const http = require('http');
+const server = http.createServer(app);
+server.listen(3001);
+const socket = require('socket.io');
+io = socket(server);
+
+io.on('connection', (socket) => {
+  console.log(socket.id);
+});
+
+
 const passport = require('passport');
 const session = require('express-session');
 const bodyParser = require('body-parser');
