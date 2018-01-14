@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 class DogProfile extends Component {
 
   constructor(props) {
@@ -17,7 +16,6 @@ class DogProfile extends Component {
         return results.json();
       })
       .then(function(data){
-          console.log(data)
           self.setState({
             dogData: data
           })

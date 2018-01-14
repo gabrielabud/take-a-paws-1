@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Dog from './Dog';
 import Dogs from './App';
-import Paw from './Paw';
 import PropTypes from 'prop-types';
+import Paw from './Paw';
 
 const DogList = props => {
     return (
@@ -17,7 +17,7 @@ const DogList = props => {
             description={dog.description}
             image= {dog.image}
             />
-            <Paw/>
+            <Paw dogId={dog.id}/>
           </div>
         ))
        }
