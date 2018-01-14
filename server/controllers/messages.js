@@ -1,5 +1,6 @@
 const Message = require('../models').Message;
-
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 module.exports = {
   create(req, res) {
     return Message
@@ -13,8 +14,21 @@ module.exports = {
   },
 
   list(req, res) {
+    const senderId = req.params.senderId;
+    const receiverId = req.params.receiverId;
+    console.log(senderId)
+    console.log(receiverId)
     return Message
-      .all()
+    .findAll({
+      where: {
+        sender: {
+          [Op.or]: [senderId, receiverId]
+        },
+        receiver: {
+          [Op.or]: [senderId, receiverId]
+        }
+      }
+    })
       .then(messages => res.status(200).send(messages))
       .catch(error => res.status(400).send(error));
   }

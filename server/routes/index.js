@@ -1,5 +1,6 @@
 const usersController = require('../controllers').users;
 const dogsController = require('../controllers').dogs;
+const messagesController = require('../controllers').messages;
 const requestsController = require('../controllers').requests;
 const fileParser = require('connect-multiparty')();
 
@@ -17,4 +18,6 @@ module.exports = (app) => {
   app.get('/api/requests/:dogId', requestsController.list);
   app.put('/api/requests/:requestId', requestsController.update);
   app.post('/api/users/image/:id', fileParser, usersController.update);
+  app.post('/api/messages', messagesController.create);
+  app.get('/api/messages', messagesController.list)
 };
