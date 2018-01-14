@@ -21,6 +21,16 @@ module.exports = {
       .catch(error => res.status(400).send(error));
   },
 
+  retrieve(req, res) {
+    return Request
+      .findAll({
+        where: { dogId: req.params.dogId, userId: req.params.userId }
+      }).then(requests =>
+        res.status(200).send(requests))
+      .catch(error => res.status(400).send(error));
+  },
+
+
   update(req, res) {
   return Request
     .findById(req.params.requestId)

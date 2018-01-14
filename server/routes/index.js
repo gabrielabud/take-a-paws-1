@@ -14,6 +14,7 @@ module.exports = (app) => {
   app.post('/api/users', usersController.create);
   app.get('/api/users', usersController.list);
   app.post('/api/users/:userId/:dogId/requests', requestsController.create);
+  app.get('/api/users/:userId/:dogId/requests', requestsController.retrieve);
   app.get('/api/requests/:dogId', requestsController.list);
   app.put('/api/requests/:requestId', requestsController.update);
   app.post('/api/users/image/:id', fileParser, usersController.update);
