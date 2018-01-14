@@ -38,6 +38,11 @@ module.exports = (sequelize, Sequelize) => {
       allowNull: false,
     },
 
+    type: {
+      type: Sequelize.TEXT,
+      allowNull: true,
+    },
+
     status: {
       type: Sequelize.ENUM('active', 'inactive'),
       defaultValue: 'active'

@@ -21,6 +21,7 @@ export default class SignUpForm extends Component {
       password: "",
       city: "",
       postcode: "",
+      type: "",
       status: null
     };
     this.handleChange = this.handleChange.bind(this);
@@ -39,8 +40,8 @@ export default class SignUpForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const { firstname, lastname, email, username, password, city, postcode } = this.state;
-    axios.post('http://localhost:3001/signup', { firstname, lastname, email, username, password, city, postcode })
+    const { firstname, lastname, email, username, password, city, postcode, type } = this.state;
+    axios.post('http://localhost:3001/signup', { firstname, lastname, email, username, password, city, postcode, type })
       .then((response) => this.setState({ status: response.data.message}));
   }
 
@@ -76,6 +77,7 @@ export default class SignUpForm extends Component {
             <Input className="SignupInput" type="password" placeholder="Password" name="password" value={this.state.password} onChange={this.handleChange} validations={[required]} /><br/>
             <Input className="SignupInput" name="city" placeholder="City" value={this.state.city} onChange={this.handleChange} validations={[required]} /><br/>
             <Input className="SignupInput" name="postcode" placeholder="Postcode" value={this.state.postcode} onChange={this.handleChange} validations={[required]} /><br/>
+            <Input className="SignupInput" name="type" placeholder="Type" value={this.state.type} onChange={this.handleChange} validations={[required]} /><br/>
           </div>
           <button className="SignupButton" type="submit" value="Submit" id="createUser">Sign up</button>
         </Form>

@@ -37,6 +37,7 @@ module.exports = (passport, user) => {
             username: req.body.username,
             city: req.body.city,
             postcode: req.body.postcode,
+            type: req.body.type
           };
           User.create(data).then((newUser, created) => {
             if(!newUser) {
