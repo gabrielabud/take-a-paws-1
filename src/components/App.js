@@ -30,10 +30,7 @@ class App extends Component {
 
   render() {
     return (
-        <div className="App">
-          <Navigation />
-          <DogList dogsapi={this.state.dogsapi}/>
-        </div>
+      <DogList dogsapi={this.state.dogsapi}/>
     );
   }
 }

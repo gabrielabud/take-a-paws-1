@@ -24,10 +24,10 @@ class Navigation extends Component {
   componentDidMount() {
     if (this.state.id != 'null') {
       this.setState({
-        listYourDog: <NavLink className="listDogs" to="/dogform" exact activeClassName="active">List your dog</NavLink>,
-        profile: <NavLink className="profile" to="/useraccount" exact activeClassName="active">Profile</NavLink>,
-        home: <NavLink className="toHome" to="/" exact activeClassName="active">Home</NavLink>,
-        logOut: <LogOut className="logOut" />
+        listYourDog: <li><NavLink className="listDogs" to="/dogform" exact activeClassName="active">List your dog</NavLink></li>,
+        profile: <li><NavLink className="profile" to="/useraccount" exact activeClassName="active">Profile</NavLink></li>,
+        home: <li><NavLink className="toHome" to="/" exact activeClassName="active">Home</NavLink></li>,
+        logOut: <li><LogOut className="logOut" /></li>
       });
     } else {
       this.setState({
@@ -40,13 +40,17 @@ class Navigation extends Component {
   render() {
     return (
       <nav className="navBar">
-        <NavLink className="about" to="/home" exact activeClassName="active">About</NavLink>
-        {this.state.listYourDog}
-        {this.state.profile}
-        {this.state.logOut}
-        {this.state.home}
-        {this.state.SigninPopup}
-        {this.state.SignupPopup}
+        <ul>
+          <li>
+            <NavLink className="about" to="/home" exact activeClassName="active">About</NavLink>
+          </li>
+          {this.state.listYourDog}
+          {this.state.profile}
+          {this.state.logOut}
+          {this.state.home}
+          {this.state.SigninPopup}
+          {this.state.SignupPopup}
+        </ul>
       </nav>
     );
   }

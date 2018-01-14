@@ -10,7 +10,7 @@ const DogList = props => {
       <div className="dogList">
         {
         props.dogsapi.map(dog => (
-          <div key={dog.id}>
+          <div className="thumb" key={dog.id}>
             <Dog
               to={"/dog/" + dog.id}
               name={dog.name}

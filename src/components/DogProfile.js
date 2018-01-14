@@ -28,12 +28,12 @@ class DogProfile extends Component {
   render() {
     return (
       <div>
-      <p>{this.state.dogData.name}</p>
-      <p>{this.state.dogData.breed}</p>
-      <p>{this.state.dogData.description}</p>
-      <div>
-        <img className="thumb" src={this.state.dogData.image} alt={this.state.dogData.name} />
-      </div>
+        <p>{this.state.dogData.name}</p>
+        <p>{this.state.dogData.breed}</p>
+        <p>{this.state.dogData.description}</p>
+        <div>
+          <img src={this.state.dogData.image} alt={this.state.dogData.name} />
+        </div>
       </div>
     );
   }

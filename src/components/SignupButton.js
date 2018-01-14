@@ -18,15 +18,15 @@ export default class SignupButton extends React.Component {
 
   render() {
   return (
-    <div>
-    <button className={this.props.className} onClick={this.togglePopup.bind(this)}>Signup</button>
+    <li>
+    <a className={this.props.className} onClick={this.togglePopup.bind(this)}>Signup</a>
     {this.state.showPopup ?
       <SignupPopup
         closePopup={this.togglePopup.bind(this)}
       />
       : null
     }
-    </div>
+    </li>
   )
 }
 }

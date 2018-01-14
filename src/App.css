@@ -1,17 +1,7 @@
 .App {
-  text-align: center;
-}
-.thumb {
-  width: 25vw;
-  margin-bottom: 4vw;
-  cursor: pointer;
+  padding-top: 70px;
 }
 
-.dog-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
 .App-header {
   background-color: #222;
   height: 150px;

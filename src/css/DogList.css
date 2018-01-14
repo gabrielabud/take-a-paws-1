@@ -1,7 +1,29 @@
 .dogList {
-  position: absolute;
-  top: 7%;
-  width: 100%;
-  height: 85%;
-  overflow: scroll;
+  display: flex;
+  padding: 0 2vw;
 }
+
+  .thumb {
+    width: 25vw;
+    padding: 0 2vw;
+    margin-bottom: 4vw;
+    cursor: pointer;
+  }
+
+  .mask
+  {
+    display: block;
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+
+    .mask img
+    {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      object-fit: cover;
+    }

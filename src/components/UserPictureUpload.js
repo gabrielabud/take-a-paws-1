@@ -40,7 +40,6 @@ class DogForm extends Component {
   render() {
     return (
       <div>
-        <Navigation />
         <form onSubmit={this.onFormSubmit}>
           <input type="file" name="image" onChange={this.onChange} />
           <button type="submit">Upload</button>
