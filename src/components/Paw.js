@@ -11,6 +11,30 @@ class Paw extends Component {
   this.handleClick = this.handleClick.bind(this);
   }
 
+  componentDidMount() {
+    let self=this;
+    const userIden = sessionStorage.getItem('id');
+    let dogIden =self.props.dogId;
+    fetch(`http://localhost:3001/api/users/${userIden}/${dogIden}/requests`)
+      .then(function(results) {
+        console.log(results.body.status)
+        return results.json();
+      })
+      .then(function(data){
+          console.log("paws")
+          console.log(data)
+          if ( data.length > 0 ) {
+            self.setState({
+              pawed: 'pawed'
+            })
+          }
+
+      })
+      .catch(function(error) {
+        console.log(error)
+      });
+  }
+
   handleClick() {
     let status = "pending";
     const userIden = sessionStorage.getItem('id');
