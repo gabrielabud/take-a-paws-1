@@ -15,7 +15,7 @@ class Paw extends Component {
   componentDidMount() {
     let self=this;
     let userIden = sessionStorage.getItem('id');
-    let dogIden =self.props.dogId;
+    let dogIden = self.props.dogId;
     fetch(`http://localhost:3001/api/users/${userIden}/${dogIden}/requests`)
       .then(function(results) {
         return results.json();
@@ -24,10 +24,17 @@ class Paw extends Component {
           if (data.length > 0) {
             self.setState({
               pawed: 'pawed',
-              pawId: data[0].id
+              pawId: data[0].id,
+              status: data[0].status
             })
           }
-
+          else  {
+            self.setState({
+              pawed: 'paw',
+              pawId: null,
+              status: null
+            })
+          }
       })
       .catch(function(error) {
         console.log(error)
@@ -40,13 +47,18 @@ class Paw extends Component {
     let dogIden = this.props.dogId;
     let pawIden = this.state.pawId;
 
+
+
     if (this.state.pawed === "paw" ) {
       axios.post(`http://localhost:3001/api/users/${userIden}/${dogIden}/requests`, { status, userIden, dogIden })
-      .then((response) => this.setState({ status: "pending" }));
-      this.setState({pawed: 'pawed'});
+      .then((response) => {
+        this.setState({ status: "pending", pawed: 'pawed', pawId: response.data.id });
+      });
     } else {
       axios.delete(`http://localhost:3001/api/requests/${pawIden}`)
-      .then((response) => this.setState({ status: null, pawed: 'paw'}));
+      .then((response) => {
+        this.setState({ status: null, pawed: 'paw', pawId: null })
+      });
     }
   }
 
