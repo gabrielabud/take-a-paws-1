@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Dog from './Dog';
-import { DOGS } from './App';
+import Dogs from './App';
 import PropTypes from 'prop-types';
+import Paw from './Paw';
 import dogList from '../css/DogList.css'
 
 const DogList = props => {
@@ -17,11 +18,11 @@ const DogList = props => {
               description={dog.description}
               image= {dog.image}
             />
+            <Paw dogId={dog.id}/>
           </div>
         ))
        }
       </div>
     );
 };
-
 export default DogList;
