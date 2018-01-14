@@ -10,9 +10,9 @@ cloudinary.config({
 
 module.exports = {
   create(req, res) {
-    var url=null;
+    var url = null;
     const imageFile = req.files.file;
-    cloudinary.uploader.upload(imageFile.path, function(result){
+    cloudinary.uploader.upload(imageFile.path, function(result) {
       url = result.url;
       return Dog
       .create({

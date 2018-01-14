@@ -59,7 +59,8 @@ app.get('/users/:id', (req, res) => {
         firstname: user.firstname,
         lastname: user.lastname,
         email: user.email,
-        username: user.username
+        username: user.username,
+        image: user.image
       })
     })
 });

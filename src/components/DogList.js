@@ -3,19 +3,20 @@ import Dog from './Dog';
 import Dogs from './App';
 import PropTypes from 'prop-types';
 import Paw from './Paw';
+import dogList from '../css/DogList.css'
 
 const DogList = props => {
     return (
-      <div id="dog-list">
+      <div className="dogList">
         {
         props.dogsapi.map(dog => (
           <div key={dog.id}>
             <Dog
-            to={"/dog/" + dog.id}
-            name={dog.name}
-            breed={dog.breed}
-            description={dog.description}
-            image= {dog.image}
+              to={"/dog/" + dog.id}
+              name={dog.name}
+              breed={dog.breed}
+              description={dog.description}
+              image= {dog.image}
             />
             <Paw dogId={dog.id}/>
           </div>

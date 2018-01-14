@@ -8,6 +8,6 @@ export default class LogOut extends Component {
   }
 
   render() {
-    return <NavLink to="/signin" exact activeClassName="active" onClick={this.killSession}>LogOut</NavLink>
+    return <NavLink className={this.props.className} to="/home" exact activeClassName="active" onClick={this.killSession}>Logout</NavLink>
   }
 }
