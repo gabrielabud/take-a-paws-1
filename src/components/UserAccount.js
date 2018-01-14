@@ -1,4 +1,5 @@
 import React from 'react';
+import UserPictureUpload from './UserPictureUpload';
 
 class UserAccount extends React.Component {
 
@@ -31,10 +32,12 @@ class UserAccount extends React.Component {
   render() {
     return (
       <div>
+      <UserPictureUpload />
       <p>{this.state.userData.firstname}</p>
       <p>{this.state.userData.lastname}</p>
       <p>{this.state.userData.username}</p>
       <p>{this.state.userData.email}</p>
+      <img className="thumb" src={this.state.userData.image} />
       </div>
     );
   }

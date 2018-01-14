@@ -6,6 +6,8 @@ import Input from 'react-validation/build/input';
 import Form from 'react-validation/build/form';
 import Navigation from './Navigation';
 import { Redirect } from 'react-router'
+import '../css/SigninForm.css';
+
 
 export default class SignInForm extends Component {
   constructor(props){
@@ -59,21 +61,20 @@ export default class SignInForm extends Component {
       };
 
       return (
-        <div>
-          <Navigation signin="true"/>
+        <div className="content">
+          <h1 className="title">Take a paws</h1>
+          <h5 className="description">Sign in to see some cool dogs.</h5>
+          <div className="logo">
+            <img className="image" src="https://bucsblade.com/wp-content/uploads/2016/12/paw-prints.jpg" alt="Instagram old logo" />
+          </div>
           <Form onSubmit={this.handleSubmit}>
-          <label>
-            Email:
-            <Input name="email" value={this.state.email} validations={[required, email]} onChange={this.handleChange} />
-          </label>
-          <label>
-            Password:
-            <Input type="password" name="password" value={this.state.password} validations={[required]} onChange={this.handleChange} />
-          </label>
-          <Input type="submit" value="Submit" />
+            <div className="inputBox">
+              <Input className="SigninInput" placeholder="Email" name="email" value={this.state.email} validations={[required, email]} onChange={this.handleChange} /><br/>
+              <Input className="SigninInput" placeholder="Password" type="password" name="password" value={this.state.password} validations={[required]} onChange={this.handleChange} /><br/>
+            </div>
+            <button className="SigninButton" type="submit" value="Submit" id="createUser">Sign in</button>
           </Form>
         </div>
     );
   }
-
 }
