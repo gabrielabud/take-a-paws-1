@@ -1,4 +1,5 @@
 const Message = require('../models').Message;
+const User = require('../models').User;
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 module.exports = {
@@ -26,6 +27,21 @@ module.exports = {
           [Op.or]: [senderId, receiverId]
         }
       }
+    })
+    .then((messages) => {
+      var arr = []
+       messages.forEach(function(message){
+          User.findOne({
+           where: {
+             id: message.sender
+           }
+         })
+         .then((user)=>{
+           console.log(user.firstname)
+         })
+       })
+
+       return messages
     })
       .then(messages => res.status(200).send(messages))
       .catch(error => res.status(400).send(error));
