@@ -19,19 +19,36 @@ class Chat extends React.Component{
        })
 
        const addMessage = data => {
-         console.log(data);
          this.setState({messages: [...this.state.messages, data]});
-         console.log(this.state.messages);
+         
        }
 
        this.sendMessage = ev => {
          ev.preventDefault();
          this.socket.emit('SEND_MESSAGE',{
-           author: this.state.username,
+           sender: this.state.username,
            message: this.state.message
          });
          this.setState({message: ''})
        }
+   }
+
+   componentDidMount() {
+     let self=this;
+     const id = sessionStorage.getItem('id');
+
+     fetch(`http://localhost:3001/api/messages?senderId=1&receiverId=2`)
+       .then(function(results) {
+         return results.json();
+       })
+       .then(function(data){
+           self.setState({
+             messages: data
+           })
+       })
+       .catch(function(error) {
+         console.log(error)
+       });
    }
 
   render(){
@@ -40,7 +57,7 @@ class Chat extends React.Component{
             <div className="messages">
               {this.state.messages.map(message => {
                 return (
-                  <div>{message.author}: {message.message}</div>
+                  <div>{message.sender}: {message.message}</div>
                 )
               })}
             </div>

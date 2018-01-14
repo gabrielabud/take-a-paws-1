@@ -14,10 +14,8 @@ module.exports = {
   },
 
   list(req, res) {
-    const senderId = req.params.senderId;
-    const receiverId = req.params.receiverId;
-    console.log(senderId)
-    console.log(receiverId)
+    const senderId = req.query.senderId;
+    const receiverId = req.query.receiverId;
     return Message
     .findAll({
       where: {
