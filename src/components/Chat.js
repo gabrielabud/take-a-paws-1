@@ -2,6 +2,7 @@ import React from "react";
 import io from "socket.io-client";
 
 class Chat extends React.Component{
+
   constructor(props){
        super(props);
 
@@ -11,6 +12,18 @@ class Chat extends React.Component{
            messages: []
        };
 
+       this.socket = io('localhost:3001');
+
+       this.socket.on('RECEIVE_MESSAGE', function(data){
+         addMessage(data);
+       })
+
+       const addMessage = data => {
+         console.log(data);
+         this.setState({messages: [...this.state.messages, data]});
+         console.log(this.state.messages);
+       }
+
        this.sendMessage = ev => {
          ev.preventDefault();
          this.socket.emit('SEND_MESSAGE',{
@@ -19,9 +32,8 @@ class Chat extends React.Component{
          });
          this.setState({message: ''})
        }
-
-       this.socket = io('localhost:3001');
    }
+
   render(){
         return (
           <div>
