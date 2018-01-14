@@ -17,5 +17,6 @@ module.exports = (app) => {
   app.get('/api/users/:userId/:dogId/requests', requestsController.retrieve);
   app.get('/api/requests/:dogId', requestsController.list);
   app.put('/api/requests/:requestId', requestsController.update);
+  app.delete('/api/requests/:requestId', requestsController.destroy);
   app.post('/api/users/image/:id', fileParser, usersController.update);
 };
