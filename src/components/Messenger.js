@@ -1,32 +1,35 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom'
+
 export default class Messenger extends Component {
+
   constructor(props) {
     super(props);
+
+    this.state = {
+      ownerId: ""
+    };
   }
-  handleClick() {
-    // sessionStorage.setItem('ownerId', arg);
-    console.log()
+
+  handleClick(arg) {
+    sessionStorage.setItem('ownerId', arg)
   }
 
   render() {
     return (
       <div>
-
-        {
-
-        this.props.messages.map(senderId => (
-
-          <button onClick={ev=> sessionStorage.setItem('ownerId', 5)} >
-            <div key={senderId}>
-              {senderId}
-            </div>
-          </button>
-
-        ))
-       }
-
+        <nav>
+          {
+          this.props.messages.map(senderId => (
+            <NavLink to='/chat' onClick={(e) => this.handleClick(senderId, e)} exact activeClassName="active">
+              <div key={senderId}>
+                {senderId}
+              </div>
+            </NavLink>
+          ))
+         }
+        </nav>
       </div>
     );
-  }
+ }
 };

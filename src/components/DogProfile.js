@@ -47,7 +47,7 @@ class DogProfile extends Component {
               <div>
                 <img className="thumb" src={this.state.dogData.image} alt={this.state.dogData.name} />
               </div>
-              <button onClick={this.handleClick} >Check Owner</button>
+              <button onClick={this.handleClick}>Check Owner</button>
             </div>
       );
     } else {
