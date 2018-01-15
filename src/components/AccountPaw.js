@@ -2,44 +2,65 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 class AccountPaw extends Component {
-constructor(props) {
-  super(props)
-  this.state = {
-    pawsReceived: [],
-    pawsGiven: [],
-    dog: null
+  constructor(props) {
+    super(props)
+    this.state = {
+      pawsReceived: [],
+      pawsGiven: [],
+      dogId: null
+    };
   }
-}
 
-componentDidMount() {
-  let self=this;
-  let userIden = parseInt(sessionStorage.getItem('id'));
-  fetch(`http://localhost:3001/api/dogs`)
-  .then(function(results) {
-    return results.json();
-  })
-  .then(function(data){
-    function isUserDog(doggy) {
-      return doggy.userId === userIden;
-    }
-    self.setState({
-      dog: data.find(isUserDog),
+  componentDidMount() {
+    let self = this;
+    let userIden = parseInt(sessionStorage.getItem('id'));
+    let dogIden = null;
+
+    fetch(`http://localhost:3001/api/dogs`)
+    .then(function(results) {
+      return results.json();
     })
-    console.log(self.state.dog)
-  })
-  .catch(function(error) {
-    console.log(error)
-  });
+    .then(function(data) {
+
+      function isUserDog(doggy) {
+        return doggy.userId === userIden;
+      }
+
+      dogIden = data.find(isUserDog).id
+      self.setState({
+        dogId: dogIden
+      })
+
+      fetch(`http://localhost:3001/api/requests/${dogIden}`)
+      .then(function(results) {
+        return results.json();
+      })
+      .then(function(data){
+        self.setState({
+          pawsReceived: data
+        })
+        console.log(self.state.pawsReceived)
+
+      })
+      .catch(function(error) {
+        console.log(error)
+      });
 
 
-}
 
-render() {
-  return (
-    <button className="accountPaw" onClick={this.handleClick}>
-      {this.state.pawsReceived}
-    </button>
-  );
-}
+    })
+    .catch(function(error) {
+      console.log(error)
+    });
+  }
+
+
+  render() {
+    return (
+      <button className="accountPaw">
+        Paws Received
+      </button>
+    );
+  }
 }
 export default AccountPaw;
