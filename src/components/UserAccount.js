@@ -39,6 +39,7 @@ class UserAccount extends React.Component {
             self.setState({
               namesData: unique
             })
+            console.log(unique)
         })
         .catch(function(error) {
           console.log(error)
