@@ -9,8 +9,10 @@ const AccountPawsReceived = props => {
         props.pawsReceived.map(paw => (
           <div key={paw.id}>
             <PawReceived
-              status={paw.status}
-              userId={paw.userId}
+              id = {paw.id}
+              statusPaw = {paw.status}
+              userId = {paw.userId}
+              dogId = {paw.dogId}
             />
           </div>
         ))
