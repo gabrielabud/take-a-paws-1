@@ -1,4 +1,5 @@
 import React from "react";
+import axios from 'axios';
 import io from "socket.io-client";
 
 class Chat extends React.Component{
@@ -7,8 +8,9 @@ class Chat extends React.Component{
        super(props);
 
        this.state = {
-           username: '',
+           senderId: sessionStorage.getItem('id'),
            message: '',
+           receiverId: sessionStorage.getItem('ownerId'),
            messages: []
        };
 
@@ -19,16 +21,17 @@ class Chat extends React.Component{
        })
 
        const addMessage = data => {
-         this.setState({messages: [...this.state.messages, data]});
-
+        this.setState({messages: [...this.state.messages, data]});
        }
 
        this.sendMessage = ev => {
          ev.preventDefault();
          this.socket.emit('SEND_MESSAGE',{
-           sender: this.state.username,
+           sender: this.state.senderId,
            message: this.state.message
          });
+         const {message, senderId, receiverId} =this.state
+         axios.post('http://localhost:3001/api/messages', {message, senderId, receiverId})
          this.setState({message: ''})
        }
    }
@@ -65,7 +68,7 @@ class Chat extends React.Component{
               })}
             </div>
             <div className="card-footer">
-              <input type="text" placeholder="Username" value={this.state.username} onChange={ev => this.setState({username: ev.target.value})} className="form-control"/>
+
               <br/>
               <input type="text" placeholder="Message" value={this.state.message} onChange={ev=>this.setState({message: ev.target.value})} className="form-control"/>
               <br/>
