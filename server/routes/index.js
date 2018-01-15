@@ -20,4 +20,5 @@ module.exports = (app) => {
   app.post('/api/users/image/:id', fileParser, usersController.update);
   app.post('/api/messages', messagesController.create);
   app.get('/api/messages', messagesController.list)
+  app.get('/api/messages/names', messagesController.getNames)
 };

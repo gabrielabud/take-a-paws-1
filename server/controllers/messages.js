@@ -31,5 +31,18 @@ module.exports = {
     })
       .then(messages => res.status(200).send(messages))
       .catch(error => res.status(400).send(error));
+  },
+
+  getNames(req, res) {
+    const receiverId = req.query.receiverId;
+    return Message
+    .findAll({
+      where: {
+        receiver: receiverId
+      }
+    })
+      .then(messages => res.status(200).send(messages))
+      .catch(error => res.status(400).send(error));
   }
+
 };

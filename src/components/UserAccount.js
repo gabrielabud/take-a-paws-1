@@ -1,12 +1,14 @@
 import React from 'react';
 import UserPictureUpload from './UserPictureUpload';
+import Messenger from './Messenger'
 
 class UserAccount extends React.Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      userData: []
+      userData: [],
+      namesData: []
     }
   }
 
@@ -19,7 +21,6 @@ class UserAccount extends React.Component {
         return results.json();
       })
       .then(function(data){
-          console.log(data)
           self.setState({
             userData: data
           })
@@ -27,6 +28,19 @@ class UserAccount extends React.Component {
       .catch(function(error) {
         console.log(error)
       });
+
+      fetch(`http://localhost:3001/api/messages/names?receiverId=${id}`)
+        .then(function(results) {
+          return results.json();
+        })
+        .then(function(data){
+            self.setState({
+              namesData: data
+            })
+        })
+        .catch(function(error) {
+          console.log(error)
+        });
   }
 
   render() {
@@ -38,6 +52,7 @@ class UserAccount extends React.Component {
       <p>{this.state.userData.username}</p>
       <p>{this.state.userData.email}</p>
       <img className="thumb" src={this.state.userData.image} />
+      <Messenger messages={this.state.namesData}/>
       </div>
     );
   }
