@@ -40,8 +40,6 @@ class Chat extends React.Component{
      let self=this;
      const userId = sessionStorage.getItem('id');
      const ownerId = sessionStorage.getItem('ownerId');
-     console.log(userId)
-     console.log(ownerId)
 
      fetch(`http://localhost:3001/api/messages?senderId=${userId}&receiverId=${ownerId}`)
        .then(function(results) {

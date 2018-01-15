@@ -34,8 +34,9 @@ class UserAccount extends React.Component {
           return results.json();
         })
         .then(function(data){
+           const unique =[...new Set(data.map(item => item.sender))];
             self.setState({
-              namesData: data
+              namesData: unique
             })
         })
         .catch(function(error) {
