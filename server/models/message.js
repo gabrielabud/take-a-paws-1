@@ -13,6 +13,14 @@ module.exports = (sequelize, Sequelize) => {
     receiver: {
       type: Sequelize.STRING,
       allowNull: false,
+    },
+    senderName: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
+    receiverName: {
+      type: Sequelize.STRING,
+      allowNull: false,
     }
   });
 
