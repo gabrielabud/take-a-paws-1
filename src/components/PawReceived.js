@@ -7,6 +7,7 @@ class PawReceived extends Component {
     super(props)
     this.state = {
       response: "accept",
+      displayStatus: "pending"
     }
     this.handleClick = this.handleClick.bind(this);
   }
@@ -19,13 +20,15 @@ class PawReceived extends Component {
       })
       .then(function(data){
            console.log(data[0].status)
-          if (data[0].status ==="accepted") {
+          if (data[0].status === "accepted") {
             self.setState({
               response: "reject",
+              displayStatus: "accepted"
             })
           } else {
             self.setState({
               response: "accept",
+              displayStatus: "rejected"
             })
           }
       })
@@ -45,15 +48,21 @@ class PawReceived extends Component {
       dogId = this.props.dogId;
       axios.put(`http://localhost:3001/api/requests/${this.props.id}`, { status })
       .then((response) => {
-        this.setState({ response: "reject" });
-          console.log(this.props.statusPaw);
+        this.setState({
+          response: "reject",
+          displayStatus: "accepted"
+        });
+          console.log(this.state.displayStatus);
       });
     } else if ( this.state.response === "reject" ) {
       status = "rejected"
       axios.put(`http://localhost:3001/api/requests/${this.props.id}`, { status })
       .then((response) => {
-        console.log(this.props.statusPaw);
-        this.setState({ response: "accept" })
+        console.log(this.state.displayStatus);
+        this.setState({
+          response: "accept",
+          displayStatus: "rejected"
+        })
       });
     }
   }
@@ -63,7 +72,7 @@ class PawReceived extends Component {
         <div className="pawreceived" >
             <div className="paw">
               received from user {this.props.userId} ->
-              {this.props.statusPaw}
+              {this.state.displayStatus}
               <button className="paw" onClick={this.handleClick}>
                 {this.state.response}
               </button>
