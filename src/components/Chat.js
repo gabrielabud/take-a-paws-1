@@ -20,7 +20,7 @@ class Chat extends React.Component{
 
        const addMessage = data => {
          this.setState({messages: [...this.state.messages, data]});
-         
+
        }
 
        this.sendMessage = ev => {
@@ -35,9 +35,12 @@ class Chat extends React.Component{
 
    componentDidMount() {
      let self=this;
-     const id = sessionStorage.getItem('id');
+     const userId = sessionStorage.getItem('id');
+     const ownerId = sessionStorage.getItem('ownerId');
+     console.log(userId)
+     console.log(ownerId)
 
-     fetch(`http://localhost:3001/api/messages?senderId=1&receiverId=2`)
+     fetch(`http://localhost:3001/api/messages?senderId=${userId}&receiverId=${ownerId}`)
        .then(function(results) {
          return results.json();
        })
