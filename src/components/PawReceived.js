@@ -11,12 +11,30 @@ class PawReceived extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-
+  componentDidMount() {
+    let self=this;
+    fetch(`http://localhost:3001/api/users/${this.props.userId}/${this.props.dogId}/requests`)
+      .then(function(results) {
+        return results.json();
+      })
+      .then(function(data){
+           console.log(data[0].status)
+          if (data[0].status ==="accepted") {
+            self.setState({
+              response: "reject",
+            })
+          } else {
+            self.setState({
+              response: "accept",
+            })
+          }
+      })
+      .catch(function(error) {
+        console.log(error)
+      });
+  }
 
   handleClick() {
-    console.log(this.state.response);
-    console.log(this.props.statusPaw);
-    console.log(this.props.id);
     let status = "";
     let userId = null;
     let dogId = null;
