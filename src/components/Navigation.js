@@ -9,7 +9,7 @@ import '../css/Navigation.css'
 class Navigation extends Component {
 
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       id: sessionStorage.getItem('id'),
       listYourDog: null,
@@ -19,6 +19,30 @@ class Navigation extends Component {
       SigninPopup: null,
       home: null
     }
+    this.logOutClicked = this.logOutClicked.bind(this)
+    this.logInClicked = this.logInClicked.bind(this)
+  }
+
+  logOutClicked() {
+    //e.preventDefault()
+    if(this)
+    this.setState({
+      id: sessionStorage.getItem('id'),
+      SignupPopup: <SignupButton className="signupButton" />,
+      SigninPopup: <SigninButton className="signinButton" />
+    })
+  }
+
+  logInClicked() {
+    this.setState({
+      id: sessionStorage.getItem('id'),
+      listYourDog: <li><NavLink className="listDogs" to="/dogform" exact activeClassName="active">List your dog</NavLink></li>,
+      profile: <li><NavLink className="profile" to="/useraccount" exact activeClassName="active">Profile</NavLink></li>,
+      home: <li><NavLink className="toHome" to="/" exact activeClassName="active">Home</NavLink></li>,
+      logOut: <li><LogOut className="logOut" logOutClicked={this.logOutClicked} /></li>,
+      SignupPopup: null,
+      SigninPopup: null
+    })
   }
 
   componentDidMount() {
@@ -27,12 +51,12 @@ class Navigation extends Component {
         listYourDog: <li><NavLink className="listDogs" to="/dogform" exact activeClassName="active">List your dog</NavLink></li>,
         profile: <li><NavLink className="profile" to="/useraccount" exact activeClassName="active">Profile</NavLink></li>,
         home: <li><NavLink className="toHome" to="/" exact activeClassName="active">Home</NavLink></li>,
-        logOut: <li><LogOut className="logOut" /></li>
+        logOut: <li><LogOut className="logOut" logOutClicked={this.logOutClicked} /></li>
       });
     } else {
       this.setState({
-        SignupPopup: <SignupButton className="signupButton" />,
-        SigninPopup: <SigninButton className="signinButton" />
+        SignupPopup: <SignupButton className="signupButton" logInClicked={this.logInClicked} />,
+        SigninPopup: <SigninButton className="signinButton" logInClicked={this.logInClicked} />
       });
     }
   }
@@ -41,13 +65,10 @@ class Navigation extends Component {
     return (
       <nav className="navBar">
         <ul>
-          <li>
-            <NavLink className="about" to="/home" exact activeClassName="active">About</NavLink>
-          </li>
+          {this.state.home}
           {this.state.listYourDog}
           {this.state.profile}
           {this.state.logOut}
-          {this.state.home}
           {this.state.SigninPopup}
           {this.state.SignupPopup}
         </ul>

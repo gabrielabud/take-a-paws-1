@@ -9,19 +9,33 @@ import Navigation from './components/Navigation';
 import Home from './components/Home';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
+const renderMergedProps = (component, ...rest) => {
+  const finalProps = Object.assign({}, ...rest);
+  return (
+    React.createElement(component, finalProps)
+  );
+}
+
+const PropsRoute = ({ component, ...rest }) => {
+  return (
+    <Route {...rest} render={routeProps => {
+      return renderMergedProps(component, routeProps, rest);
+    }}/>
+  );
+}
+
 const Routes = (props) => (
   <Router {...props}>
     <div className="App">
-      <Navigation />
       <Switch>
-        <Route exact path='/' component={App} />
-        <Route exact path='/home' component={Home} />
+        <PropsRoute exact path='/' component={App} isLoggedIn={sessionStorage.getItem('id')} />
         <Route exact path="/dog/:dogId" component={DogProfile} />
         <Route exact path="/signup" component={SignUpForm} />
         <Route exact path="/dogform" component={DogForm} />
         <Route exact path="/signin" component={SignInForm} />
         <Route exact path="/useraccount" component={UserAccount} />
       </Switch>
+      <Navigation />
     </div>
   </Router>
 );

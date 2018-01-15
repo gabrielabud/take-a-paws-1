@@ -1,6 +1,17 @@
 body {
   font: 16px/1.5 "Nunito", sans-serif;
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+  color: #111;
+}
+
+a,
+a:visited
+{
+  text-decoration: none;
+  color: #111;
+}
+
+img
+{
+  width: 100%;
+  height: auto;
 }

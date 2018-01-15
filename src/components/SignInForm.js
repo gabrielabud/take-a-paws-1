@@ -7,7 +7,9 @@ import Form from 'react-validation/build/form';
 import Navigation from './Navigation';
 import { Redirect } from 'react-router'
 import '../css/SigninForm.css';
+import createBrowserHistory from 'history/createBrowserHistory'
 
+const appHistory = createBrowserHistory()
 
 export default class SignInForm extends Component {
   constructor(props){
@@ -33,12 +35,19 @@ export default class SignInForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    let popup = this;
     const { email, password } = this.state;
     axios.post('http://localhost:3001/signin', { email, password })
-    .then((response) => this.setState({ status: response.data.message}))
+    .then((response) => {
+      if(response.data.message === "200"){
+        // temporary hack
+        //window.location.reload();
+      }
+    })
     .then(axios.get(`http://localhost:3001/id/${email}`)
       .then(function (response) {
         sessionStorage.setItem('id', response.data.id);
+        if(response.data.id) popup.props.updateNav();
       })
     );
   }
@@ -50,7 +59,9 @@ export default class SignInForm extends Component {
 
       const required = (value) => {
         if (!value.toString().trim().length) {
-          return 'required field';
+          return (
+            <span className="error-text">required field</span>
+          )
         }
       };
 
@@ -69,8 +80,8 @@ export default class SignInForm extends Component {
           </div>
           <Form onSubmit={this.handleSubmit}>
             <div className="inputBox">
-              <Input className="SigninInput" placeholder="Email" name="email" value={this.state.email} validations={[required, email]} onChange={this.handleChange} /><br/>
-              <Input className="SigninInput" placeholder="Password" type="password" name="password" value={this.state.password} validations={[required]} onChange={this.handleChange} /><br/>
+              <Input className="SigninInput" placeholder="Email" name="email" value={this.state.email} validations={[required, email]} onChange={this.handleChange} />
+              <Input className="SigninInput" placeholder="Password" type="password" name="password" value={this.state.password} validations={[required]} onChange={this.handleChange} />
             </div>
             <button className="SigninButton" type="submit" value="Submit" id="createUser">Sign in</button>
           </Form>

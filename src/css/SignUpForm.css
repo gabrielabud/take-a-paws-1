@@ -1,17 +1,4 @@
-.content {
-  border-width: thin;
-  border-style: solid;
-  border-color: lightgrey;
-  position: absolute;
-  top: 5%;
-  left: 10%;
-  background-color: white;
-  width: 78%;
-  height: 90%;
-  text-align: center;
-}
-
-.input {
+/*.input {
   border-color: white;
   position: absolute;
   top: 30%;
@@ -22,7 +9,6 @@
 }
 
 .title {
-  font-family: "Brush Script MT";
   background-color: white;
   position: absolute;
   font-size: 40px;
@@ -74,4 +60,4 @@
   height: 6%;
   width: 60%;
   background-color: dodgerblue;
-}
+}*/

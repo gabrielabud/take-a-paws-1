@@ -1,12 +1,15 @@
 .dogList {
   display: flex;
-  padding: 0 2vw;
+  flex-wrap: wrap;
+  padding: 0;
+  width: calc(100vw - 30px);
+  margin-left: -15px;
 }
 
   .thumb {
-    width: 25vw;
-    padding: 0 2vw;
-    margin-bottom: 4vw;
+    width: 25%;
+    padding: 0 15px;
+    margin-bottom: 70px;
     cursor: pointer;
   }
 

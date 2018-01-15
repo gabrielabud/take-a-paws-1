@@ -10,11 +10,15 @@ export default class SigninButton extends React.Component {
     }
   }
 
+  updateNav() {
+    this.props.logInClicked()
+  }
+
   togglePopup() {
     this.setState({
       showPopup: !this.state.showPopup
     });
-  }
+}
 
   render() {
   return (
@@ -23,6 +27,7 @@ export default class SigninButton extends React.Component {
       {this.state.showPopup ?
         <SigninPopup
           closePopup={this.togglePopup.bind(this)}
+          updateNav={this.updateNav.bind(this)}
         />
         : null
       }
