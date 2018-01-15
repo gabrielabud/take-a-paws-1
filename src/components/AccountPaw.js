@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import AccountPawsReceived from './AccountPawsReceived';
 
 class AccountPaw extends Component {
   constructor(props) {
@@ -46,8 +47,6 @@ class AccountPaw extends Component {
         console.log(error)
       });
 
-
-
     })
     .catch(function(error) {
       console.log(error)
@@ -57,9 +56,9 @@ class AccountPaw extends Component {
 
   render() {
     return (
-      <button className="accountPaw">
-        Paws Received
-      </button>
+      <div>
+        <AccountPawsReceived pawsReceived={this.state.pawsReceived}/>
+      </div>
     );
   }
 }
