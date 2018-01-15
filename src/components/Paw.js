@@ -6,23 +6,60 @@ class Paw extends Component {
     super(props)
     this.state = {
       pawed: "paw",
-      status: null
+      status: null,
+      pawId: ""
     }
   this.handleClick = this.handleClick.bind(this);
   }
 
+  componentDidMount() {
+    let self=this;
+    let userIden = sessionStorage.getItem('id');
+    let dogIden = self.props.dogId;
+    fetch(`http://localhost:3001/api/users/${userIden}/${dogIden}/requests`)
+      .then(function(results) {
+        return results.json();
+      })
+      .then(function(data){
+          if (data.length > 0) {
+            self.setState({
+              pawed: 'pawed',
+              pawId: data[0].id,
+              status: data[0].status
+            })
+          }
+          else  {
+            self.setState({
+              pawed: 'paw',
+              pawId: null,
+              status: null
+            })
+          }
+      })
+      .catch(function(error) {
+        console.log(error)
+      });
+  }
+
   handleClick() {
     let status = "pending";
-    const userIden = sessionStorage.getItem('id');
-    let dogIden =this.props.dogId;
-    console.log(userIden);
-    console.log(dogIden)
-    axios.post(`http://localhost:3001/api/users/${userIden}/${dogIden}/requests`, { status, userIden, dogIden })
-      .then((response) => this.setState({ status: response.data.message}));
-    this.setState({
-      pawed: 'pawed'
-    });
-    console.log(this.state.status)
+    let userIden = sessionStorage.getItem('id');
+    let dogIden = this.props.dogId;
+    let pawIden = this.state.pawId;
+
+
+
+    if (this.state.pawed === "paw" ) {
+      axios.post(`http://localhost:3001/api/users/${userIden}/${dogIden}/requests`, { status, userIden, dogIden })
+      .then((response) => {
+        this.setState({ status: "pending", pawed: 'pawed', pawId: response.data.id });
+      });
+    } else {
+      axios.delete(`http://localhost:3001/api/requests/${pawIden}`)
+      .then((response) => {
+        this.setState({ status: null, pawed: 'paw', pawId: null })
+      });
+    }
   }
 
   render() {

@@ -1,6 +1,7 @@
 import React from 'react';
 import UserPictureUpload from './UserPictureUpload';
 import Messenger from './Messenger'
+import AccountPaw from './AccountPaw';
 
 class UserAccount extends React.Component {
 
@@ -54,6 +55,7 @@ class UserAccount extends React.Component {
       <p>{this.state.userData.email}</p>
       <img className="thumb" src={this.state.userData.image} />
       <Messenger messages={this.state.namesData}/>
+      <AccountPaw />
       </div>
     );
   }
