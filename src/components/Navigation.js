@@ -14,23 +14,27 @@ class Navigation extends Component {
       id: sessionStorage.getItem('id'),
       listYourDog: null,
       profile: null,
+      home: null,
       logOut: null,
       SignupPopup: null,
-      SigninPopup: null,
-      home: null
+      SigninPopup: null
     }
     this.logOutClicked = this.logOutClicked.bind(this)
     this.logInClicked = this.logInClicked.bind(this)
   }
 
   logOutClicked() {
-    //e.preventDefault()
-    if(this)
     this.setState({
-      id: sessionStorage.getItem('id'),
-      SignupPopup: <SignupButton className="signupButton" />,
-      SigninPopup: <SigninButton className="signinButton" />
+      id: null,
+      listYourDog: null,
+      profile: null,
+      home: null,
+      logOut: null,
+      SignupPopup: <SignupButton className="signupButton" logInClicked={this.logInClicked} />,
+      SigninPopup: <SigninButton className="signinButton" logInClicked={this.logInClicked} />
     })
+
+    if(this.props.setLoggedIn) this.props.setLoggedIn()
   }
 
   logInClicked() {
@@ -43,6 +47,8 @@ class Navigation extends Component {
       SignupPopup: null,
       SigninPopup: null
     })
+
+    if(this.props.setLoggedIn) this.props.setLoggedIn()
   }
 
   componentDidMount() {

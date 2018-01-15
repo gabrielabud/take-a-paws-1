@@ -4,7 +4,8 @@ import { NavLink } from 'react-router-dom'
 export default class LogOut extends Component {
 
   constructor(props) {
-    super(props);
+    super(props)
+    this.killSession = this.killSession.bind(this)
   }
 
   killSession() {

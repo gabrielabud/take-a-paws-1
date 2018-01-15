@@ -3,7 +3,6 @@ import axios from 'axios';
 import validator from 'validator';
 import Input from 'react-validation/build/input';
 import Form from 'react-validation/build/form';
-import Navigation from './Navigation';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { Redirect } from 'react-router';
 import SigninPopup from './SigninPopup';
@@ -46,10 +45,9 @@ export default class SignUpForm extends Component {
   }
 
   render() {
-
     const { status } = this.state;
     if(status === "200") {
-      return <SigninPopup />;
+      return <SigninPopup logInClicked={this.props.logInClicked} />;
     }
 
     const required = (value) => {

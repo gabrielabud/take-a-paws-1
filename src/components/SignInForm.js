@@ -38,23 +38,19 @@ export default class SignInForm extends Component {
     let popup = this;
     const { email, password } = this.state;
     axios.post('http://localhost:3001/signin', { email, password })
-    .then((response) => {
-      if(response.data.message === "200"){
-        window.location.reload();
-      }
-    })
+    //.then((response) => this.setState({ status: response.data.message}))
     .then(axios.get(`http://localhost:3001/id/${email}`)
       .then(function (response) {
         sessionStorage.setItem('id', response.data.id);
-        if(response.data.id) popup.props.updateNav;
+        if(response.data.id) popup.props.logInClicked();
       })
     );
   }
   render() {
-      const { status } = this.state;
+      /*const { status } = this.state;
       if(status === "200") {
         return <Redirect to='/' />;
-      }
+      }*/
 
       const required = (value) => {
         if (!value.toString().trim().length) {

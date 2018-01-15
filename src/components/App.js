@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
 import DogList from './DogList';
+import Navigation from './Navigation';
 import Home from './Home';
 
 function ConditionalHome(props) {
@@ -22,6 +23,14 @@ class App extends Component {
       dogsapi: [],
       isLoggedIn: sessionStorage.getItem('id')
     }
+
+    this.setLoggedIn = this.setLoggedIn.bind(this)
+  }
+
+  setLoggedIn() {
+    this.setState({
+      isLoggedIn: sessionStorage.getItem('id')
+    })
   }
 
   componentDidMount() {
@@ -43,7 +52,10 @@ class App extends Component {
 
   render() {
     return (
-      <ConditionalHome showDogs={this.state.isLoggedIn} dogsapi={this.state.dogsapi} />
+      <div>
+        <ConditionalHome showDogs={this.state.isLoggedIn} dogsapi={this.state.dogsapi} />
+        <Navigation setLoggedIn={this.setLoggedIn} />
+      </div>
     );
   }
 }

@@ -7,7 +7,7 @@ export default class SigninPopup extends React.Component {
     return (
       <div className='popup'>
         <div className='popup_inner'>
-          <SignInForm updateNav={this.props.updateNav} />
+          <SignInForm logInClicked={this.props.logInClicked} />
           <a className='closeButton' onClick={this.props.closePopup}>X</a>
         </div>
       </div>

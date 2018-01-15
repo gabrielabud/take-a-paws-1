@@ -6,7 +6,6 @@ import DogForm from './components/DogForm';
 import SignInForm from './components/SignInForm';
 import UserAccount from './components/UserAccount';
 import Navigation from './components/Navigation';
-import Home from './components/Home';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 const renderMergedProps = (component, ...rest) => {
@@ -35,7 +34,9 @@ const Routes = (props) => (
         <Route exact path="/signin" component={SignInForm} />
         <Route exact path="/useraccount" component={UserAccount} />
       </Switch>
-      <Navigation />
+      <Route render={({location}) => {
+        return location.pathname !== '/' ? <Navigation /> : ''
+      }} />
     </div>
   </Router>
 );

@@ -23,6 +23,7 @@ export default class SignupButton extends React.Component {
     {this.state.showPopup ?
       <SignupPopup
         closePopup={this.togglePopup.bind(this)}
+        logInClicked={this.props.logInClicked}
       />
       : null
     }

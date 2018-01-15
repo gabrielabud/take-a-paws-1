@@ -19,7 +19,6 @@ class UserAccount extends React.Component {
         return results.json();
       })
       .then(function(data){
-          console.log(data)
           self.setState({
             userData: data
           })
