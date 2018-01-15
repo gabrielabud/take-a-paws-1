@@ -30,6 +30,15 @@ module.exports = {
       .catch(error => res.status(400).send(error));
   },
 
+  retrieveByUser(req, res) {
+    return Request
+      .findAll({
+        where: { userId: req.params.userId }
+      }).then(requests =>
+        res.status(200).send(requests))
+      .catch(error => res.status(400).send(error));
+  },
+
   update(req, res) {
    console.log(req.body);
    console.log(req.body.status);
