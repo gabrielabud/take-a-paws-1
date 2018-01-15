@@ -23,8 +23,10 @@ sender(req.body.senderId).then(function(user){
     receiverName = user;
   Message.create({
     message: req.body.message,
-    sender: senderName,
-    receiver: receiverName
+    sender: req.body.senderId,
+    receiver: req.body.receiverId,
+    senderName: senderName,
+    receiverName: receiverName
 
   })
   .then(message => res.status(201).send(message))
