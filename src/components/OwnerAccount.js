@@ -1,7 +1,6 @@
 import React from 'react';
-import UserPictureUpload from './UserPictureUpload';
-import Messenger from './Messenger'
-import AccountPaw from './AccountPaw';
+import { NavLink } from 'react-router-dom'
+import Chat from './Chat'
 
 class UserAccount extends React.Component {
 
@@ -9,14 +8,12 @@ class UserAccount extends React.Component {
     super(props)
     this.state = {
       userData: [],
-      namesData: []
     }
   }
 
   componentDidMount() {
     let self=this;
-    const id = sessionStorage.getItem('id');
-
+    const id = sessionStorage.getItem('ownerId');
     fetch(`http://localhost:3001/users/${id}`)
       .then(function(results) {
         return results.json();
@@ -29,33 +26,20 @@ class UserAccount extends React.Component {
       .catch(function(error) {
         console.log(error)
       });
-
-      fetch(`http://localhost:3001/api/messages/names?receiverId=${id}`)
-        .then(function(results) {
-          return results.json();
-        })
-        .then(function(data){
-           const unique =[...new Set(data.map(item => item.sender))];
-            self.setState({
-              namesData: unique
-            })
-        })
-        .catch(function(error) {
-          console.log(error)
-        });
   }
 
   render() {
     return (
       <div>
-      <UserPictureUpload />
       <p>{this.state.userData.firstname}</p>
       <p>{this.state.userData.lastname}</p>
       <p>{this.state.userData.username}</p>
       <p>{this.state.userData.email}</p>
       <img className="thumb" src={this.state.userData.image} />
-      <Messenger messages={this.state.namesData}/>
-      <AccountPaw />
+      <button onClick={this.props.onClick}>Back to dog</button><br/>
+      <nav>
+      <NavLink to="/chat" exact activeClassName="active">Chattttttt</NavLink>
+      </nav>
       </div>
     );
   }
