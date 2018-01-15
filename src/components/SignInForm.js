@@ -40,14 +40,13 @@ export default class SignInForm extends Component {
     axios.post('http://localhost:3001/signin', { email, password })
     .then((response) => {
       if(response.data.message === "200"){
-        // temporary hack
-        //window.location.reload();
+        window.location.reload();
       }
     })
     .then(axios.get(`http://localhost:3001/id/${email}`)
       .then(function (response) {
         sessionStorage.setItem('id', response.data.id);
-        if(response.data.id) popup.props.updateNav();
+        if(response.data.id) popup.props.updateNav;
       })
     );
   }
