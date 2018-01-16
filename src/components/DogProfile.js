@@ -10,13 +10,15 @@ class DogProfile extends Component {
     super(props)
     this.state = {
       dogData: [],
-      clicked: true
+      clicked: true,
+      requestStatus: 'pending'
     }
     this.handleClick = this.handleClick.bind(this)
   }
 
   componentDidMount() {
     let self = this;
+    const userId = sessionStorage.getItem('id');
     const id = self.props.match.params.dogId
     fetch(`http://localhost:3001/api/dogs/${id}`)
       .then(function(results) {
@@ -30,6 +32,21 @@ class DogProfile extends Component {
       .catch(function(error) {
         console.log(error)
       });
+console.log(self.state.requestStatus)
+      fetch(`/api/users/${userId}/${id}/requests`)
+        .then(function(results) {
+          return results.json();
+        })
+        .then(function(data){
+          self.setState({
+            requestStatus: data[0].status
+          })
+            console.log(self.state.requestStatus)
+        })
+        .catch(function(error) {
+          console.log(error)
+        });
+
   }
 
   handleClick() {
