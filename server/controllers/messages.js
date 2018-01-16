@@ -5,14 +5,35 @@ const Op = Sequelize.Op;
 
 module.exports = {
   create(req, res) {
-    return Message
-      .create({
+var sender = function(senderId){
+  return User.find({
+    where:{
+      id:senderId
+    }
+  })
+  .then(function(user){
+    return user.firstname
+  })
+}
+var senderName = '';
+var receiverName = '';
+sender(req.body.senderId).then(function(user){
+  senderName = user;
+  sender(req.body.receiverId).then(function(user){
+    receiverName = user;
+      Message.create({
         message: req.body.message,
         sender: req.body.senderId,
-        receiver: req.body.receiverId
+        receiver: req.body.receiverId,
+        senderName: senderName,
+        receiverName: receiverName
+
       })
-      .then(message => res.status(201).send(message))
-      .catch(error => res.status(400).send(error));
+  .then(message => res.status(201).send(message))
+  .catch(error => res.status(400).send(error));
+  })
+})
+
   },
 
   list(req, res) {

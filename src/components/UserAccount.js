@@ -9,7 +9,8 @@ class UserAccount extends React.Component {
     super(props)
     this.state = {
       userData: [],
-      namesData: []
+      namesData: [],
+      namesNamesData:[]
     }
   }
 
@@ -36,9 +37,12 @@ class UserAccount extends React.Component {
         })
         .then(function(data){
            const unique =[...new Set(data.map(item => item.sender))];
+           const uniqueName = [...new Set(data.map(item => item.senderName))];
             self.setState({
-              namesData: unique
+              namesData: unique,
+              namesNamesData: uniqueName
             })
+            console.log(unique)
         })
         .catch(function(error) {
           console.log(error)
@@ -54,7 +58,7 @@ class UserAccount extends React.Component {
       <p>{this.state.userData.username}</p>
       <p>{this.state.userData.email}</p>
       <img className="thumb" src={this.state.userData.image} />
-      <Messenger messages={this.state.namesData}/>
+      <Messenger messages={this.state.namesData} names={this.state.namesNamesData}/>
       <AccountPaw />
       </div>
     );

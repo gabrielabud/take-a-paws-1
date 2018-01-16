@@ -17,6 +17,12 @@ module.exports = {
       receiver: {
         type: Sequelize.TEXT
       },
+      senderName: {
+        type: Sequelize.TEXT
+      },
+      receiverName: {
+        type: Sequelize.TEXT
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
