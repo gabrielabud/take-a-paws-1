@@ -10,7 +10,30 @@
     width: 25%;
     padding: 0 15px;
     margin-bottom: 70px;
-    cursor: pointer;
+  }
+
+  @media only screen and (max-width: 1200px)
+  {
+    .thumb
+    {
+      width: 33.333333%;
+    }
+  }
+
+  @media only screen and (max-width: 1023px)
+  {
+    .thumb
+    {
+      width: 50%;
+    }
+  }
+
+  @media only screen and (max-width: 767px)
+  {
+    .thumb
+    {
+      width: 100%;
+    }
   }
 
   .mask
@@ -30,3 +53,15 @@
       position: absolute;
       object-fit: cover;
     }
+
+    .meta
+    {
+      display: flex;
+      margin-top: 10px;
+    }
+
+      .meta h2
+      {
+        line-height: 40px;
+        text-transform: capitalize;
+      }

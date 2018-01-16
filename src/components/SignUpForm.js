@@ -66,8 +66,7 @@ export default class SignUpForm extends Component {
 
     return (
       <div className="content">
-        <h1 className="title">Take a paws</h1>
-        <h5 className="description">Sign up to see some cool dogs.</h5>
+        <h3 className="description">Sign up to see some cool dogs.</h3>
         <Form onSubmit={this.handleSubmit}>
           <div className="inputBox">
             <Input className="SignupInput" name="firstname" placeholder="First name" value={this.state.firstname} onChange={this.handleChange} validations={[required]} />

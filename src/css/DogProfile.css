@@ -1,0 +1,14 @@
+.dog-profile{
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.dog-profile h1
+{
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.profile-pic{
+  margin: 20px 0 30px;
+}

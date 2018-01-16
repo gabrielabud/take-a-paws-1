@@ -33,6 +33,7 @@
 }
 
 .logo {
+  margin: 0 auto;
 }
 
 .image {
@@ -93,8 +94,8 @@
 
 .closeButton {
   position: absolute;
-  right: 15px;
-  top: 15px;
+  right: 10px;
+  top: 10px;
   border: 0;
   cursor: pointer;
 }

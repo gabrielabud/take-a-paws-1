@@ -14,6 +14,6 @@ export default class LogOut extends Component {
   }
 
   render() {
-    return <NavLink className={this.props.className} to="/" exact activeClassName="active" onClick={this.killSession}>Logout</NavLink>
+    return <NavLink className={this.props.className} to="/" exact activeClassName="" onClick={this.killSession}>Logout</NavLink>
   }
 }
