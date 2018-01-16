@@ -29,7 +29,7 @@ const Routes = (props) => (
       <Switch>
         <PropsRoute exact path='/' component={App} isLoggedIn={sessionStorage.getItem('id')} />
         <Route exact path="/dog/:dogId" component={DogProfile} />
-        <Route exact path="/signup" component={SignUpForm} />
+        <Route exact path="/signup" component={SignUpForm} />n
         <Route exact path="/dogform" component={DogForm} />
         <Route exact path="/signin" component={SignInForm} />
         <Route exact path="/useraccount" component={UserAccount} />
