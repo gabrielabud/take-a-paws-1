@@ -58,7 +58,6 @@ class DogForm extends Component {
   render() {
     return (
       <div>
-        <Navigation />
         <form onSubmit={this.onFormSubmit}>
           <label>
             Name:

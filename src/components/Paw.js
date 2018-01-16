@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import '../css/Paw.css'
 
 class Paw extends Component {
   constructor(props) {
@@ -9,13 +10,14 @@ class Paw extends Component {
       status: null,
       pawId: ""
     }
-  this.handleClick = this.handleClick.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
-    let self=this;
+    let self = this;
     let userIden = sessionStorage.getItem('id');
     let dogIden = self.props.dogId;
+
     fetch(`http://localhost:3001/api/users/${userIden}/${dogIden}/requests`)
       .then(function(results) {
         return results.json();
@@ -47,8 +49,6 @@ class Paw extends Component {
     let dogIden = this.props.dogId;
     let pawIden = this.state.pawId;
 
-
-
     if (this.state.pawed === "paw" ) {
       axios.post(`http://localhost:3001/api/users/${userIden}/${dogIden}/requests`, { status, userIden, dogIden })
       .then((response) => {
@@ -64,9 +64,7 @@ class Paw extends Component {
 
   render() {
     return (
-      <button className="paw" onClick={this.handleClick}>
-        {this.state.pawed}
-      </button>
+      <a className={`paw-button ${this.state.pawed}`} onClick={this.handleClick}></a>
     );
   }
 }

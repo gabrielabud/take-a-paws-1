@@ -14,19 +14,20 @@ export default class SigninButton extends React.Component {
     this.setState({
       showPopup: !this.state.showPopup
     });
-  }
+}
 
   render() {
-  return (
-    <div>
-    <button className={this.props.className} onClick={this.togglePopup.bind(this)}>Signin</button>
-    {this.state.showPopup ?
-      <SigninPopup
-        closePopup={this.togglePopup.bind(this)}
-      />
-      : null
-    }
-    </div>
-  )
-}
+    return (
+      <li>
+        <a className={this.props.className} onClick={this.togglePopup.bind(this)}>Signin</a>
+        {this.state.showPopup ?
+          <SigninPopup
+            closePopup={this.togglePopup.bind(this)}
+            logInClicked={this.props.logInClicked}
+          />
+          : null
+        }
+      </li>
+    )
+  }
 }
