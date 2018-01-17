@@ -14,6 +14,7 @@ class DogProfile extends Component {
       requestStatus: ''
     }
     this.handleClick = this.handleClick.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
   componentDidMount() {
@@ -56,6 +57,16 @@ console.log(self.state.requestStatus)
     sessionStorage.setItem('ownerId', this.state.dogData.userId);
   }
 
+  handleChange() {
+    const status =this.state.requestStatus ;
+    if (status === '') {
+   this.setState({ requestStatus: null});
+    }
+    else {
+      this.setState({ requestStatus: ''});
+    }
+ }
+
   render() {
     const status =this.state.requestStatus ;
     var chatOptions ;
@@ -78,7 +89,7 @@ console.log(self.state.requestStatus)
          </div>
          <p>{this.state.dogData.breed}</p>
          <p>{this.state.dogData.description}</p>
-        <Paw dogId={this.props.match.params.dogId} />
+        <button onClick={this.handleChange}><Paw dogId={this.props.match.params.dogId}/></button>
          {chatOptions}
 
        </div>
