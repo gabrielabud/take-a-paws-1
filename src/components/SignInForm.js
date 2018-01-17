@@ -42,6 +42,7 @@ export default class SignInForm extends Component {
     .then(axios.get(`http://localhost:3001/id/${email}`)
       .then(function (response) {
         sessionStorage.setItem('id', response.data.id);
+        sessionStorage.setItem('name', response.data.firstname);
         if(response.data.id) popup.props.logInClicked();
       })
     );

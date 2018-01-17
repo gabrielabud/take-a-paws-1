@@ -61,7 +61,10 @@ app.get('/id/:email', (req, res) => {
       email: req.params.email
     }
   }).then((user) => {
-      res.status(200).send({ id: user.id })
+      res.status(200).send({
+        id: user.id,
+        firstname: user.firstname
+       })
     })
 });
 
@@ -77,6 +80,18 @@ app.get('/users/:id', (req, res) => {
         lastname: user.lastname,
         email: user.email,
         username: user.username,
+        image: user.image
+      })
+    })
+});
+
+app.get('/api/images/:id', (req, res) => {
+  models.User.findOne({
+    where: {
+      id: req.params.id
+    }
+  }).then((user) => {
+      res.status(200).send({
         image: user.image
       })
     })
