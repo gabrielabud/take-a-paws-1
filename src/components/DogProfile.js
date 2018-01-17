@@ -11,7 +11,7 @@ class DogProfile extends Component {
     this.state = {
       dogData: [],
       clicked: true,
-      requestStatus: 'pending'
+      requestStatus: ''
     }
     this.handleClick = this.handleClick.bind(this)
   }
@@ -57,17 +57,31 @@ console.log(self.state.requestStatus)
   }
 
   render() {
+    const status =this.state.requestStatus ;
+    var chatOptions ;
+    if(status === ''){
+     chatOptions = <p>Send Paw request to be able to chat!</p>
+    }
+    else if(status === 'pending'){
+      chatOptions = <p>Paw response pending !</p>
+    }
+    else{
+      chatOptions = <button onClick={this.handleClick}>Check Owner</button>
+    }
+
     if(this.state.clicked) {
       return (
-             <div className="dog-profile" key={this.state.dogData.id}>
-              <h1>{this.state.dogData.name}</h1>
-              <div className="profile-pic">
-                <img src={this.state.dogData.image} alt={this.state.dogData.name} />
-              </div>
-              <p>{this.state.dogData.breed}</p>
-              <p>{this.state.dogData.description}</p>
-              <button onClick={this.handleClick}>Check Owner</button>
-            </div>
+        <div className="dog-profile" key={this.state.dogData.id}>
+         <h1>{this.state.dogData.name}</h1>
+         <div className="profile-pic">
+           <img src={this.state.dogData.image} alt={this.state.dogData.name} />
+         </div>
+         <p>{this.state.dogData.breed}</p>
+         <p>{this.state.dogData.description}</p>
+
+         {chatOptions}
+
+       </div>
       );
     } else {
       return (
