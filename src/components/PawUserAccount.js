@@ -36,6 +36,7 @@ class PawUserAccount extends React.Component {
       <p>{this.state.userData.lastname}</p>
       <p>{this.state.userData.username}</p>
       <p>{this.state.userData.email}</p>
+      <p>{this.state.userData.description}</p>
       <img className="thumb" src={this.state.userData.image} />
       </div>
     );
