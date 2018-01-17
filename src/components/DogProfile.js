@@ -78,7 +78,7 @@ console.log(self.state.requestStatus)
          </div>
          <p>{this.state.dogData.breed}</p>
          <p>{this.state.dogData.description}</p>
-
+        <Paw dogId={this.props.match.params.dogId} />
          {chatOptions}
 
        </div>
