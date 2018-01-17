@@ -72,7 +72,6 @@ describe('Dogs', function() {
       expect(res.body[0]).to.have.property("description");
       expect(res.body[0].description).to.equal("test dog");
       expect(res.body[0]).to.have.property("image");
-      expect(res.body[0].image).to.equal("http://res.cloudinary.com/dqcs0clma/image/upload/v1516054739/b5jc1u5f7rczesciskxv.jpg");
       done();
     });
   });
