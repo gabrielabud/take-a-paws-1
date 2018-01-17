@@ -33,7 +33,7 @@ class DogProfile extends Component {
         console.log(error)
       });
 console.log(self.state.requestStatus)
-      fetch(`/api/users/${userId}/${id}/requests`)
+      fetch(`http://localhost:3001/api/users/${userId}/${id}/requests`)
         .then(function(results) {
           return results.json();
         })
@@ -62,11 +62,11 @@ console.log(self.state.requestStatus)
     if(status === ''){
      chatOptions = <p>Send Paw request to be able to chat!</p>
     }
-    else if(status === 'pending'){
-      chatOptions = <p>Paw response pending !</p>
+    else if(status === 'accepted'){
+      chatOptions = <button onClick={this.handleClick}>Check Owner</button>
     }
     else{
-      chatOptions = <button onClick={this.handleClick}>Check Owner</button>
+      chatOptions = <p>Paw response pending !</p>
     }
 
     if(this.state.clicked) {
