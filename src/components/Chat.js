@@ -1,6 +1,7 @@
 import React from "react";
 import axios from 'axios';
 import io from "socket.io-client";
+import '../css/Chat.css'
 
 class Chat extends React.Component{
 
@@ -8,10 +9,12 @@ class Chat extends React.Component{
        super(props);
 
        this.state = {
-           senderId: sessionStorage.getItem('id'),
-           message: '',
-           receiverId: sessionStorage.getItem('ownerId'),
-           messages: []
+         senderId: sessionStorage.getItem('id'),
+         message: '',
+         receiverId: sessionStorage.getItem('ownerId'),
+         messages: [],
+         userImage: '',
+         ownerImage: ''
        };
 
        this.socket = io('localhost:3001');
@@ -27,7 +30,7 @@ class Chat extends React.Component{
        this.sendMessage = ev => {
          ev.preventDefault();
          this.socket.emit('SEND_MESSAGE',{
-           sender: this.state.senderId,
+           senderName: sessionStorage.getItem('name'),
            message: this.state.message
          });
          const {message, senderId, receiverId} =this.state
@@ -53,25 +56,59 @@ class Chat extends React.Component{
        .catch(function(error) {
          console.log(error)
        });
+
+       fetch(`http://localhost:3001/api/images/${userId}`)
+         .then(function(results) {
+           return results.json();
+         })
+         .then(function(data){
+             self.setState({
+               userImage: data.image
+             })
+         })
+         .catch(function(error) {
+           console.log(error)
+         });
+
+         fetch(`http://localhost:3001/api/images/${ownerId}`)
+           .then(function(results) {
+             return results.json();
+           })
+           .then(function(data){
+               self.setState({
+                 ownerImage: data.image
+               })
+           })
+           .catch(function(error) {
+             console.log(error)
+           });
    }
 
   render(){
+
         return (
-          <div>
-            <div className="messages">
+          <div className="mainBox">
+            <img className="userImage" src={this.state.userImage}/>
+            <img className="ownerImage" src={this.state.ownerImage}/>
+            <div className="helloworld">
+            <div className="messageBox">
               {this.state.messages.map(message => {
-                return (
-                  <div>{message.senderName}: {message.message}</div>
-                )
+                if(message.senderName == sessionStorage.getItem('name')) {
+                  return (
+                    <p className="newMessageSender">{message.senderName}: {message.message}</p>
+                  )
+                } else {
+                  return <p className="newMessageReceiver">{message.senderName}: {message.message}</p>
+                }
               })}
             </div>
             <div className="card-footer">
-
               <br/>
-              <input type="text" placeholder="Message" value={this.state.message} onChange={ev=>this.setState({message: ev.target.value})} className="form-control"/>
+              <input type="text" className="chatEntry" value={this.state.message} onChange={ev=>this.setState({message: ev.target.value})}/>
               <br/>
-              <button onClick={this.sendMessage} className="submit-btn">Send</button>
+              <button className="sendButton" onClick={this.sendMessage}>Send</button>
             </div>
+          </div>
           </div>
         );
     }
