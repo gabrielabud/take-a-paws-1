@@ -22,6 +22,7 @@ class UserAccount extends React.Component {
           self.setState({
             userData: data
           })
+          console.log(this.state.userData)
       })
       .catch(function(error) {
         console.log(error)
@@ -29,12 +30,14 @@ class UserAccount extends React.Component {
   }
 
   render() {
+    console.log(this.state.userData.description)
     return (
       <div>
       <p>{this.state.userData.firstname}</p>
       <p>{this.state.userData.lastname}</p>
       <p>{this.state.userData.username}</p>
       <p>{this.state.userData.email}</p>
+      <p>{this.state.userData.description}</p>
       <img className="thumb" src={this.state.userData.image} />
       <button onClick={this.props.onClick}>Back to dog</button><br/>
       <nav>

@@ -15,9 +15,6 @@ io.on('connection', (socket) => {
   })
 });
 
-
-
-
 const passport = require('passport');
 const session = require('express-session');
 const bodyParser = require('body-parser');
@@ -77,7 +74,8 @@ app.get('/users/:id', (req, res) => {
         lastname: user.lastname,
         email: user.email,
         username: user.username,
-        image: user.image
+        image: user.image,
+        description: user.description
       })
     })
 });
