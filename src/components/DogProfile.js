@@ -11,7 +11,7 @@ class DogProfile extends Component {
     this.state = {
       dogData: [],
       clicked: true,
-      requestStatus: 'pending'
+      requestStatus: ''
     }
     this.handleClick = this.handleClick.bind(this)
   }
@@ -33,7 +33,7 @@ class DogProfile extends Component {
         console.log(error)
       });
 console.log(self.state.requestStatus)
-      fetch(`/api/users/${userId}/${id}/requests`)
+      fetch(`http://localhost:3001/api/users/${userId}/${id}/requests`)
         .then(function(results) {
           return results.json();
         })
@@ -57,17 +57,31 @@ console.log(self.state.requestStatus)
   }
 
   render() {
+    const status =this.state.requestStatus ;
+    var chatOptions ;
+    if(status === ''){
+     chatOptions = <p>Send Paw request to be able to chat!</p>
+    }
+    else if(status === 'accepted'){
+      chatOptions = <button onClick={this.handleClick}>Check Owner</button>
+    }
+    else{
+      chatOptions = <p>Paw response pending !</p>
+    }
+
     if(this.state.clicked) {
       return (
-             <div className="dog-profile" key={this.state.dogData.id}>
-              <h1>{this.state.dogData.name}</h1>
-              <div className="profile-pic">
-                <img src={this.state.dogData.image} alt={this.state.dogData.name} />
-              </div>
-              <p>{this.state.dogData.breed}</p>
-              <p>{this.state.dogData.description}</p>
-              <button onClick={this.handleClick}>Check Owner</button>
-            </div>
+        <div className="dog-profile" key={this.state.dogData.id}>
+         <h1>{this.state.dogData.name}</h1>
+         <div className="profile-pic">
+           <img src={this.state.dogData.image} alt={this.state.dogData.name} />
+         </div>
+         <p>{this.state.dogData.breed}</p>
+         <p>{this.state.dogData.description}</p>
+
+         {chatOptions}
+
+       </div>
       );
     } else {
       return (

@@ -17,7 +17,6 @@ class PawGiven extends Component {
         return results.json();
       })
       .then(function(data){
-           console.log(data[0].status)
           if (data[0].status === "accepted") {
             self.setState({
               displayStatus: "accepted"
@@ -35,11 +34,25 @@ class PawGiven extends Component {
 
 
   render () {
+    let path = `/dog/${this.props.dogId}`
+    const status =this.state.displayStatus ;
+    let pawStatus ;
+    if(status === 'rejected'){
+     pawStatus = 'pending'
+    }
+    else if(status === 'pending'){
+      pawStatus = 'pending'
+
+    }
+    else{
+      pawStatus = 'accepted'
+    }
     return (
         <div className="pawgiven" >
             <div className="paw">
-              Given to dog {this.props.dogId} ->
-              {this.state.displayStatus}
+            <Link to={path}><button> Check dog </button></Link>
+            ->
+             {pawStatus}
             </div>
         </div>
     );
