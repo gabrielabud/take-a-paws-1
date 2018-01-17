@@ -51,16 +51,16 @@ class UserAccount extends React.Component {
 
   render() {
     return (
-      <div>
-      <UserPictureUpload />
-      <br/>
-      <UserDescriptionUpdate/>
-      <p>{this.state.userData.firstname}</p>
-      <p>{this.state.userData.lastname}</p>
-      <p>{this.state.userData.username}</p>
-      <p>{this.state.userData.email}</p>
-      <p>{this.state.userData.description}</p>
+      <div classame="useraccount">
+      <p>
+        <span className="userfirstname">{this.state.userData.firstname} </span>
+        <span className="userlastname">{this.state.userData.lastname}       </span>
+        <span className="userlastname"> {this.state.userData.email}</span>
+      </p>
       <img className="thumb" src={this.state.userData.image} />
+      <UserPictureUpload />
+      <UserDescriptionUpdate/>
+      <p>{this.state.userData.description}</p>
       <Messenger messages={this.state.namesData} names={this.state.namesNamesData}/>
       <AccountPaw />
       </div>
