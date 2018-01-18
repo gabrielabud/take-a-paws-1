@@ -70,8 +70,8 @@ class AccountPaw extends Component {
   render() {
     return (
       <div>
-      <AccountPawsReceived pawsReceived={this.state.pawsReceived}/>
-      <AccountPawsGiven pawsGiven={this.state.pawsGiven}/>
+        <AccountPawsReceived pawsReceived={this.state.pawsReceived}/>
+        <AccountPawsGiven pawsGiven={this.state.pawsGiven}/>
       </div>
     );
   }
