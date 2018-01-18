@@ -59,7 +59,7 @@ class UserAccount extends React.Component {
           <div className="userDescription">{this.state.userData.description}</div>
         </header>
 
-        <img className="userImage" src={this.state.userData.image} />
+        <img className="userImage" src={this.state.userData.image} alt="" />
 
         <UserPictureUpload />
         <UserDescriptionUpdate />

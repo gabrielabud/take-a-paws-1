@@ -97,12 +97,12 @@ class Chat extends React.Component{
 
             <div className="messageBox">
               {this.state.messages.map(message => {
-                if(message.senderName == sessionStorage.getItem('name')) {
+                if(message.senderName === sessionStorage.getItem('name')) {
                   return (
-                    <p className="newMessage newMessageSender"><span class="messageName">{message.senderName}:</span> {message.message}</p>
+                    <p key={message.id} className="newMessage newMessageSender"><span className="messageName">{message.senderName}:</span> {message.message}</p>
                   )
                 } else {
-                  return <p className="newMessage newMessageReceiver"><span class="messageName">{message.senderName}:</span> {message.message}</p>
+                  return <p key={message.id} className="newMessage newMessageReceiver"><span className="messageName">{message.senderName}:</span> {message.message}</p>
                 }
               })}
             </div>

@@ -31,13 +31,14 @@ class PawUserAccount extends React.Component {
 
   render() {
     return (
-      <div>
-      <p>{this.state.userData.firstname}</p>
-      <p>{this.state.userData.lastname}</p>
-      <p>{this.state.userData.username}</p>
-      <p>{this.state.userData.email}</p>
-      <p>{this.state.userData.description}</p>
-      <img className="thumb" src={this.state.userData.image} />
+      <div className="userAccount">
+        <header>
+          <h1>{this.state.userData.firstname} {this.state.userData.lastname}</h1>
+          <div className="userEmail">{this.state.userData.email}</div>
+          <div className="userDescription">{this.state.userData.description}</div>
+        </header>
+
+        <img className="userImage" src={this.state.userData.image} alt="" />
       </div>
     );
   }

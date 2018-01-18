@@ -69,14 +69,14 @@ export default class SignUpForm extends Component {
         <h3 className="description">Sign up to see some cool dogs.</h3>
         <Form onSubmit={this.handleSubmit}>
           <div className="inputBox">
-            <Input className="SignupInput" name="firstname" placeholder="First name" value={this.state.firstname} onChange={this.handleChange} validations={[required]} />
-            <Input className="SignupInput" name="lastname" placeholder="Last name" value={this.state.lastname} onChange={this.handleChange} validations={[required]} />
-            <Input className="SignupInput" name="email" placeholder="Email" value={this.state.email} onChange={this.handleChange} validations={[required, email]} />
-            <Input className="SignupInput" name="username" placeholder="Username" value={this.state.username} onChange={this.handleChange} validations={[required]}/>
-            <Input className="SignupInput" type="password" placeholder="Password" name="password" value={this.state.password} onChange={this.handleChange} validations={[required]} />
-            <Input className="SignupInput" name="city" placeholder="City" value={this.state.city} onChange={this.handleChange} validations={[required]} />
-            <Input className="SignupInput" name="postcode" placeholder="Postcode" value={this.state.postcode} onChange={this.handleChange} validations={[required]} />
-            <Input className="SignupInput" name="type" placeholder="Type" value={this.state.type} onChange={this.handleChange} validations={[required]} />
+            <Input type="text" className="SignupInput" name="firstname" placeholder="First name" value={this.state.firstname} onChange={this.handleChange} validations={[required]} />
+            <Input type="text" className="SignupInput" name="lastname" placeholder="Last name" value={this.state.lastname} onChange={this.handleChange} validations={[required]} />
+            <Input type="email" className="SignupInput" name="email" placeholder="Email" value={this.state.email} onChange={this.handleChange} validations={[required, email]} />
+            <Input type="text" className="SignupInput" name="username" placeholder="Username" value={this.state.username} onChange={this.handleChange} validations={[required]}/>
+            <Input type="password" className="SignupInput" type="password" placeholder="Password" name="password" value={this.state.password} onChange={this.handleChange} validations={[required]} />
+            <Input type="text" className="SignupInput" name="city" placeholder="City" value={this.state.city} onChange={this.handleChange} validations={[required]} />
+            <Input type="text" className="SignupInput" name="postcode" placeholder="Postcode" value={this.state.postcode} onChange={this.handleChange} validations={[required]} />
+            <Input type="text" className="SignupInput" name="type" placeholder="Type" value={this.state.type} onChange={this.handleChange} validations={[required]} />
           </div>
           <button className="SignupButton" type="submit" value="Submit" id="createUser">Sign up</button>
         </Form>

@@ -73,8 +73,8 @@ export default class SignInForm extends Component {
           <img className="image" src="https://bucsblade.com/wp-content/uploads/2016/12/paw-prints.jpg"  />
           <Form onSubmit={this.handleSubmit}>
             <div className="inputBox">
-              <Input className="SigninInput" placeholder="Email" name="email" value={this.state.email} validations={[required, email]} onChange={this.handleChange} />
-              <Input className="SigninInput" placeholder="Password" type="password" name="password" value={this.state.password} validations={[required]} onChange={this.handleChange} />
+              <Input type="email" className="SigninInput" placeholder="Email" name="email" value={this.state.email} validations={[required, email]} onChange={this.handleChange} />
+              <Input type="password" className="SigninInput" placeholder="Password" type="password" name="password" value={this.state.password} validations={[required]} onChange={this.handleChange} />
             </div>
             <button className="SigninButton" type="submit" value="Submit" id="createUser">Sign in</button>
           </Form>

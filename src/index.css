@@ -31,13 +31,11 @@ img
 
 input[type="text"],
 input[type="email"],
-input[type="date"],
-input[type="search"],
-input[type="submit"],
-input[type="number"],
+input[type="password"],
 button,
 textarea,
-select
+select,
+.button
 {
 	border: 0;
 
@@ -51,8 +49,9 @@ select
 
 	font-family: "Nunito";
 
-  padding: 8px 12px;
+  padding: 8px 13px;
   height: 40px;
+  display: inline-block;
 }
 
   textarea {
@@ -62,9 +61,7 @@ select
 
 input[type="text"],
 input[type="email"],
-input[type="date"],
-input[type="search"],
-input[type="number"],
+input[type="password"],
 textarea,
 select
 {
@@ -72,19 +69,35 @@ select
 	color: #111;
 }
 
+input:-webkit-autofill
+{
+	background: #eee;
+	color: #111;
+}
+
 input[type="submit"],
-button
+button,
+.button
 {
 	cursor: pointer;
-  background: #aaa;
+  background: rgba(0, 0, 0, .3);
   color: #fff;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: .6px;
   font-size: 13px;
+  line-height: 24px;
   font-weight: 600;
 }
 
-  .accountPaws button{
+  .button,
+  .button:visited
+  {
+    background: #111;
+    color: #fff;
+  }
+
+  .accountPaws button,
+  .accountChats button{
     padding: 4px 8px;
     font-size: 12px;
     line-height: 22px;
@@ -113,7 +126,7 @@ textarea::-ms-clear
 input::-webkit-input-placeholder,
 textarea::-webkit-input-placeholder
 {
-	color: #666;
+	color: #999;
 	padding: 0;
 	outline: 0;
 }
@@ -121,7 +134,7 @@ textarea::-webkit-input-placeholder
 input::-moz-input-placeholder,
 textarea::-moz-input-placeholder
 {
-	color: #666;
+	color: #999;
 	padding: 0;
 	outline: 0;
 }
@@ -129,7 +142,7 @@ textarea::-moz-input-placeholder
 input::-ms-input-placeholder,
 textarea::-ms-input-placeholder
 {
-	color: #666;
+	color: #999;
 	padding: 0;
 	outline: 0;
 }
