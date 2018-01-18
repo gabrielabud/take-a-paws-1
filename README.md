@@ -58,6 +58,7 @@ Take a Paws could be used for dog walking, taking care of the dog while the owne
  ```
  Features implemented beyond MPV
  
+  ```
  As a user,
  So that I can show my love for dogs,
  I would like to be able to "paw" the dog I like.
@@ -77,6 +78,7 @@ Take a Paws could be used for dog walking, taking care of the dog while the owne
  As a user,
  So that I can dog lovers better,
  I would like to able to chat.
+  ```
  
  # Contributors
 - Gabriela Budeanu [@gabrielabud](https://github.com/gabrielabud)
