@@ -17,18 +17,18 @@ export default class Messenger extends Component {
 
   render() {
     return (
-      <div>
-        <nav>
+      <div className="accountChats">
           {
           this.props.messages.map( (senderId , i) => (
-            <NavLink to='/chat' onClick={(e) => this.handleClick(senderId, e)} exact activeClassName="active">
+            <NavLink to='/chat' onClick={(e) => this.handleClick(senderId, e)} exact className="chat">
               <div key={senderId}>
                 {this.props.names[i]}
               </div>
+
+              <button>Open</button>
             </NavLink>
           ))
          }
-        </nav>
       </div>
     );
  }

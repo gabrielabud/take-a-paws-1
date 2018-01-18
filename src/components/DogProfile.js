@@ -77,21 +77,25 @@ console.log(self.state.requestStatus)
       chatOptions = <button onClick={this.handleClick}>Check Owner</button>
     }
     else{
-      chatOptions = <p>Paw response pending !</p>
+      chatOptions = <p className="waiting">Paw response pending!</p>
     }
 
     if(this.state.clicked) {
       return (
-        <div className="dog-profile" key={this.state.dogData.id}>
-         <h1>{this.state.dogData.name}</h1>
-         <div className="profile-pic">
-           <img src={this.state.dogData.image} alt={this.state.dogData.name} />
-         </div>
-         <p>{this.state.dogData.breed}</p>
-         <p>{this.state.dogData.description}</p>
-        <button onClick={this.handleChange}><Paw dogId={this.props.match.params.dogId}/></button>
-         {chatOptions}
+       <div className="userAccount dogProfile">
+         <header>
+           <h1>{this.state.dogData.name}</h1>
+           <div className="userEmail">{this.state.dogData.breed}</div>
+           <div className="userDescription">{this.state.dogData.description}</div>
+         </header>
 
+
+         <img className="userImage" src={this.state.dogData.image} alt={this.state.dogData.name} />
+          <button onClick={this.handleChange}><Paw dogId={this.props.match.params.dogId}/></button>
+         <nav class="buttons">
+           {chatOptions}
+           <Paw dogId={this.props.match.params.dogId} />
+         </nav>
        </div>
       );
     } else {

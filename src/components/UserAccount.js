@@ -1,7 +1,9 @@
 import React from 'react';
 import UserPictureUpload from './UserPictureUpload';
+import UserDescriptionUpdate from './UserDescriptionUpdate';
 import Messenger from './Messenger'
 import AccountPaw from './AccountPaw';
+import '../css/UserAccount.css'
 
 class UserAccount extends React.Component {
 
@@ -50,15 +52,23 @@ class UserAccount extends React.Component {
 
   render() {
     return (
-      <div>
-      <UserPictureUpload />
-      <p>{this.state.userData.firstname}</p>
-      <p>{this.state.userData.lastname}</p>
-      <p>{this.state.userData.username}</p>
-      <p>{this.state.userData.email}</p>
-      <img className="thumb" src={this.state.userData.image} />
-      <Messenger messages={this.state.namesData} names={this.state.namesNamesData}/>
-      <AccountPaw />
+      <div className="userAccount">
+        <header>
+          <h1>{this.state.userData.firstname} {this.state.userData.lastname}</h1>
+          <div className="userEmail">{this.state.userData.email}</div>
+          <div className="userDescription">{this.state.userData.description}</div>
+        </header>
+
+        <img className="userImage" src={this.state.userData.image} alt="" />
+
+        <UserPictureUpload />
+        <UserDescriptionUpdate />
+
+        <h2>Chats</h2>
+        <Messenger messages={this.state.namesData} names={this.state.namesNamesData}/>
+
+        <h2>Paws</h2>
+        <AccountPaw />
       </div>
     );
   }

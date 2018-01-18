@@ -1,0 +1,100 @@
+.mainBox {
+  position: relative;
+  padding-bottom: 60px;
+}
+
+.chatImage {
+  width: 150px;
+  height: 150px;
+  position: fixed;
+  top: 100px;
+  mask-image: url("../images/paw-mask.svg");
+  mask-repeat: no-repeat;
+}
+
+  .userImage {
+    left: calc(50vw - 430px);
+  }
+
+  .ownerImage {
+    right: calc(50vw - 430px);
+  }
+
+  @media only screen and (max-width: 920px)
+  {
+    .userImage {
+      left: 20px;
+    }
+
+    .ownerImage {
+      right: 20px;
+    }
+  }
+
+  .chatImage img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    object-fit: cover;
+  }
+
+.messageBox {
+  max-width: 500px;
+  width: calc(100vw - 380px);
+  margin: 0 auto;
+  /*display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;*/
+}
+
+.newMessage
+{
+  /*width: 90%;
+  max-width: 300px;*/
+  background: #eee;
+  padding: 8px 12px;
+  border-radius: 10px;
+  margin: 0 0 10px 0;
+}
+
+  .newMessageReceiver
+  {
+    background: #dbeeff;
+      /*background: #dbeeff;
+      align-self: flex-end;*/
+  }
+
+.messageName{
+  font-weight: 600;
+}
+
+.chatFooter
+{
+  background: #fff;
+  width: 100%;
+  height: 80px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: 10px 30px 30px;
+  display: flex;
+  justify-content: center;
+  flex-grow: 0;
+}
+
+.chatEntry{
+  width: calc(100vw - 180px);
+  max-width: 380px;
+}
+
+  @media only screen and (max-width: 920px)
+  {
+    .chatEntry
+    {
+      max-width: none;
+    }
+  }
+
+.sendButton{
+  width: 120px
+}
