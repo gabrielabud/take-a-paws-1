@@ -91,10 +91,9 @@ console.log(self.state.requestStatus)
 
 
          <img className="userImage" src={this.state.dogData.image} alt={this.state.dogData.name} />
-          <button onClick={this.handleChange}><Paw dogId={this.props.match.params.dogId}/></button>
+          <button className="specialButton" onClick={this.handleChange}><Paw dogId={this.props.match.params.dogId}/></button>
          <nav class="buttons">
            {chatOptions}
-           <Paw dogId={this.props.match.params.dogId} />
          </nav>
        </div>
       );
