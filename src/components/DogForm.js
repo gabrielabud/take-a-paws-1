@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import axios, { post } from 'axios';
-import { Redirect } from 'react-router';
 import Navigation from './Navigation';
+import { Redirect } from 'react-router-dom';
 import dogForm from '../css/DogForm.css'
+
 
 class DogForm extends Component {
   constructor(props) {
@@ -12,7 +13,7 @@ class DogForm extends Component {
       breed: '',
       description: '',
       redirect: false,
-      file:null
+      file:null,
     }
     this.onFormSubmit = this.onFormSubmit.bind(this)
     this.onChange = this.onChange.bind(this)
@@ -31,9 +32,9 @@ class DogForm extends Component {
   }
 
   onFormSubmit(e){
-    e.preventDefault() // Stop form submit
-
+    e.preventDefault()
     this.fileUpload(this.state.file);
+    setTimeout(function() { this.setState({redirect:true}); }.bind(this), 3000);
   }
 
   onChange(e) {
@@ -57,6 +58,10 @@ class DogForm extends Component {
   }
 
   render() {
+    const { redirect } = this.state;
+    if(redirect) {
+      return<Redirect to={'/'}> </Redirect>
+    }
     return (
       <div>
         <form className="dogForm" onSubmit={this.onFormSubmit}>
