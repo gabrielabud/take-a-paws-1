@@ -22,10 +22,10 @@ Take a Paws could be used for dog walking, taking care of the dog while the owne
  - $ sequelize db:migrate --env test
  - $ npm test -> for running the tests
 
- # Technologies
+ # Full Stack Javascript Technologies
  - React
  - Node
- - Socket.io
+ - Socket.io for the chat
  - Mocha and Chai for testing
 
  # Approach
@@ -56,7 +56,28 @@ Take a Paws could be used for dog walking, taking care of the dog while the owne
  So that my cat not to use my account,
  I would like to log out from the website.
  ```
-
+ Features implemented beyond MPV
+ 
+ As a user,
+ So that I can show my love for dogs,
+ I would like to be able to "paw" the dog I like.
+ 
+ As a dog owner,
+ So that I can show my enthusiasm to dog lovers,
+ I would like to be able to accept their "paw" requests.
+ 
+ As a user,
+ So that I know which dogs lovers contact me,
+ I would like to see the paws requests in my account page.
+ 
+ As a user,
+ So that I know which dogs lovers contact me,
+ I would like to see the paws requests in my account page.
+ 
+ As a user,
+ So that I can dog lovers better,
+ I would like to able to chat.
+ 
  # Contributors
 - Gabriela Budeanu [@gabrielabud](https://github.com/gabrielabud)
 - Andrew Davey [@ajdavey8](https://github.com/ajdavey8)
