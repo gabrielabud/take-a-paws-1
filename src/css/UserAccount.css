@@ -1,3 +1,103 @@
-.userfirstname {
-  padding-right:20px
+.userAccount
+{
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+  .ownerAccount
+  {
+    max-width: 450px;
+  }
+
+  .userAccount form{
+    margin: 30px 0;
+    text-align: center;
+  }
+
+.userAccount header{
+  text-align: center;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.userDescription{
+  margin: 25px 0 30px 0;
+}
+
+.userEmail
+{
+  color: #999;
+  font-size: 14px;
+}
+
+.userAccount h2
+{
+  font-weight: 600;
+}
+
+.userAccount h2,
+.userAccount h3
+{
+  margin-top: 30px;
+}
+
+.userAccount .minusTop
+{
+  margin-top: 5px;
+}
+
+.userAccount .pawline,
+.userAccount .chat{
+  width: 100%;
+  height: 60px;
+  line-height: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 15px;
+  margin-top: 10px;
+  background: #eee;
+}
+
+.userAccount .pawline button,
+.accountChats button{
+  margin-left: auto;
+}
+
+.pawStatus
+{
+  display: block;
+  font-size: 13px;
+  line-height: 30px;
+  opacity: .5;
+  margin-left: 10px;
+}
+
+.accountPawsReceived .pawline.accepted
+{
+  background: #eaffec;
+}
+
+.accountPawsReceived .pawline.rejected
+{
+  background: #ffeaea
+}
+
+.userAccount .buttons
+{
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+  .userAccount .buttons .paw-button
+  {
+    margin-left: 10px;
+  }
+
+  .userAccount .buttons p{
+    margin: 8px 0;
+  }
+
+.userAccount .button{
+  margin-left: 10px;
 }

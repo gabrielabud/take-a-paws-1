@@ -88,27 +88,28 @@ class Chat extends React.Component{
 
         return (
           <div className="mainBox">
-            <img className="userImage" src={this.state.userImage}/>
-            <img className="ownerImage" src={this.state.ownerImage}/>
-            <div className="helloworld">
+            <div className="chatImage userImage">
+              <img src={this.state.userImage} alt=""/>
+            </div>
+            <div className="chatImage ownerImage">
+              <img src={this.state.ownerImage} alt=""/>
+            </div>
+
             <div className="messageBox">
               {this.state.messages.map(message => {
-                if(message.senderName == sessionStorage.getItem('name')) {
+                if(message.senderName === sessionStorage.getItem('name')) {
                   return (
-                    <p className="newMessageSender">{message.senderName}: {message.message}</p>
+                    <p key={message.id} className="newMessage newMessageSender"><span className="messageName">{message.senderName}:</span> {message.message}</p>
                   )
                 } else {
-                  return <p className="newMessageReceiver">{message.senderName}: {message.message}</p>
+                  return <p key={message.id} className="newMessage newMessageReceiver"><span className="messageName">{message.senderName}:</span> {message.message}</p>
                 }
               })}
             </div>
-            <div className="card-footer">
-              <br/>
+            <div className="chatFooter">
               <input type="text" className="chatEntry" value={this.state.message} onChange={ev=>this.setState({message: ev.target.value})}/>
-              <br/>
               <button className="sendButton" onClick={this.sendMessage}>Send</button>
             </div>
-          </div>
           </div>
         );
     }

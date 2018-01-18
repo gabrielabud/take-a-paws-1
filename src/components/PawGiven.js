@@ -48,12 +48,9 @@ class PawGiven extends Component {
       pawStatus = 'accepted'
     }
     return (
-        <div className="pawgiven" >
-            <div className="paw">
-            <Link to={path}><button> Check dog </button></Link>
-            ->
-             {pawStatus}
-            </div>
+        <div className={`pawline pawgiven ${this.state.displayStatus}`}>
+          <Link to={path}><button>Check dog</button></Link>
+          <span className="pawStatus">{pawStatus}</span>
         </div>
     );
   }

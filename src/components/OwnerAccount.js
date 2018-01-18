@@ -30,19 +30,19 @@ class UserAccount extends React.Component {
   }
 
   render() {
-    console.log(this.state.userData.description)
     return (
-      <div>
-      <p>{this.state.userData.firstname}</p>
-      <p>{this.state.userData.lastname}</p>
-      <p>{this.state.userData.username}</p>
-      <p>{this.state.userData.email}</p>
-      <p>{this.state.userData.description}</p>
-      <img className="thumb" src={this.state.userData.image} />
-      <button onClick={this.props.onClick}>Back to dog</button><br/>
-      <nav>
-      <NavLink to="/chat" exact activeClassName="active">Chattttttt</NavLink>
-      </nav>
+      <div className="userAccount ownerAccount">
+        <header>
+          <h1>{this.state.userData.firstname} {this.state.userData.lastname}</h1>
+          <div className="userEmail">{this.state.userData.email}</div>
+          <div className="userDescription">{this.state.userData.description}</div>
+        </header>
+
+        <img className="userImage" src={this.state.userData.image} />
+        <nav className="buttons">
+          <button onClick={this.props.onClick}>Back to dog</button><br/>
+          <NavLink to="/chat" exact className="button">Start chat</NavLink>
+        </nav>
       </div>
     );
   }

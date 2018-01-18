@@ -67,14 +67,12 @@ class PawReceived extends Component {
   render () {
     let path = `/user/${this.props.userId}`
     return (
-        <div className="pawreceived" >
-            <div className="paw">
-              <Link to={path}><button> Check profile </button></Link>
-              {this.state.displayStatus}
-              <button className="paw" onClick={this.handleClick}>
-                {this.state.response}
-              </button>
-            </div>
+        <div className={`pawline pawreceived ${this.state.displayStatus}`}>
+            <Link to={path}><button>Check profile</button></Link>
+            <span className="pawStatus">{this.state.displayStatus}</span>
+            <button onClick={this.handleClick}>
+              {this.state.response}
+            </button>
         </div>
     );
   }

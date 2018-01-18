@@ -31,13 +31,11 @@ class DescriptionUpdate extends Component {
     });
   }
 
-
-
   render() {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <input type="text" name="description" onChange={this.handleChange} />
+          <textarea name="description" onChange={this.handleChange}></textarea>
           <button type="submit">Update description</button>
         </form>
       </div>

@@ -5,8 +5,8 @@ import PawReceived from './PawReceived';
 const AccountPawsReceived = props => {
     return (
       <div>
-        <div> Paws received </div>
-        <div className="accountpawsreceived">
+        <h3 className="minusTop">Paws Received</h3>
+        <div className="accountPaws accountPawsReceived">
           {
           props.pawsReceived.map(paw => (
             <div key={paw.id}>
