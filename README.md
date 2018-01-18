@@ -14,10 +14,10 @@ Take a Paws could be used for dog walking, taking care of the dog while the owne
  - $ createdb take-a-paws-test
  - $ sequelize db:migrate:all
  - $ set up .env file with your cloudinary.com details
-     NODE_ENV='development'
-     cloud_name=
-     api_key=
-     api_secret=
+     - NODE_ENV='development'
+     - cloud_name=
+     - api_key=
+     - api_secret=
  - $ npm start  & npm run paws
  - $ sequelize db:migrate --env test
  - $ npm test -> for running the tests
